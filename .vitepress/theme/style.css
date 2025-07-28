@@ -372,3 +372,41 @@ html.dark .VPNavBar {
   max-height: 55px !important;
 }
 
+/**
+ * Dark Mode Toggle Styling
+ * -------------------------------------------------------------------------- */
+
+/* Make the dark mode toggle more visible */
+.VPSwitch {
+  background-color: var(--vp-c-bg-mute) !important;
+  border: 1px solid var(--vp-c-divider) !important;
+}
+
+/* Style the toggle button in light mode */
+.VPSwitch .check {
+  background-color: var(--vp-c-brand) !important;
+}
+
+/* Add hover effect */
+.VPSwitch:hover {
+  border-color: var(--vp-c-brand) !important;
+}
+
+/* Make the sun/moon icons more visible */
+.VPSwitchAppearance {
+  opacity: 1 !important;
+}
+
+.VPSwitchAppearance svg {
+  fill: var(--vp-c-text-2) !important;
+}
+
+/* Ensure the switch track is visible */
+.VPSwitch .slider {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .VPSwitch .slider {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
