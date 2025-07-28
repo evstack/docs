@@ -23,37 +23,10 @@ export default withMermaid({
   head: [
     ["link", { rel: "icon", href: "/img/favicon.svg", type: "image/svg+xml" }],
     ["link", { rel: "icon", href: "/img/favicon.png", type: "image/png" }],
-    // [
-    //   'link',
-    //   {
-    //     rel: 'icon',
-    //     type: 'image/svg+xml',
-    //     href: '/img/favicon-dark.svg',
-    //     media: '(prefers-color-scheme: dark)',
-    //   },
-    // ],
-    // [
-    //   'link',
-    //   {
-    //     rel: 'icon',
-    //     type: 'image/png',
-    //     href: '/img/favicon-dark.png',
-    //     media: '(prefers-color-scheme: dark)',
-    //   },
-    // ],
     [
       "link",
       { rel: "shortcut icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
-    // [
-    //   'link',
-    //   {
-    //     rel: 'icon',
-    //     type: 'image/x-icon',
-    //     href: '/img/favicon-dark.ico',
-    //     media: '(prefers-color-scheme: dark)',
-    //   },
-    // ],
     ["meta", { name: "msapplication-TileColor", content: "#fff" }],
     ["meta", { name: "theme-color", content: "#fff" }],
     [
@@ -78,23 +51,6 @@ export default withMermaid({
     ["meta", { name: "twitter:url", content: "https://evolve.dev" }],
     ["meta", { name: "og:image", content: "/img/Evolve-cover.jpg" }],
     ["meta", { name: "apple-mobile-web-app-title", content: "Evolve" }],
-    // [
-    //   "script",
-    //   {},
-    //   `
-    //   window.chatbaseConfig = {
-    //     chatbotId: "sw0sRxREFEQLTdqwC_Fbe",
-    //   }
-    //   `,
-    // ],
-    // [
-    //   "script",
-    //   {
-    //     src: "https://www.chatbase.co/embed.min.js",
-    //     id: "sw0sRxREFEQLTdqwC_Fbe",
-    //     defer: true,
-    //   },
-    // ],
     [
       "script",
       {
@@ -103,14 +59,45 @@ export default withMermaid({
         defer: true,
       },
     ],
-    [
-      "script",
-      {
-        src: "https://platform.twitter.com/widgets.js",
-        async: true,
-      },
-    ],
   ],
+  
+  // // Build optimizations
+  // vite: {
+  //   build: {
+  //     rollupOptions: {
+  //       output: {
+  //         manualChunks: (id) => {
+  //           // Extract vendor chunks
+  //           if (id.includes('node_modules')) {
+  //             if (id.includes('vue') || id.includes('@vue')) {
+  //               return 'vue';
+  //             }
+  //             if (id.includes('mermaid')) {
+  //               return 'mermaid';
+  //             }
+  //             return 'vendor';
+  //           }
+  //         },
+  //       },
+  //     },
+  //     // Enable minification
+  //     minify: 'terser',
+  //     terserOptions: {
+  //       compress: {
+  //         drop_console: true,
+  //         drop_debugger: true,
+  //       },
+  //     },
+  //     // Optimize chunk size
+  //     chunkSizeWarningLimit: 1000,
+  //   },
+  //   // Optimize dependencies
+  //   optimizeDeps: {
+  //     include: ['vue', '@vue/runtime-core', '@vue/runtime-dom', '@vue/shared'],
+  //     exclude: ['vitepress'],
+  //   },
+  // },
+  
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: nav(),
