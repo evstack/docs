@@ -53,4 +53,4 @@ You should see the following log message indicating that your chain is connected
 
 ## Summary
 
-By following these steps, you will set up a local DA network node and configure your chain to post data to it. This setup is useful for testing and development in a controlled environment. You can find more information on running the local-da binary [here](https://github.com/evolve/evolve/blob/main/da/cmd/local-da/README.md)
+By following these steps, you will set up a local DA network node and configure your chain to post data to it. This setup is useful for testing and development in a controlled environment. You can find more information on running the local-da binary [here](https://github.com/evstack/ev-node/blob/main/da/cmd/local-da/README.md)

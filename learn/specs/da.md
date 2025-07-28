@@ -29,5 +29,5 @@ Both `SubmitBlocks` and `RetrieveBlocks` may be unsuccessful if the DA node and 
 
 [2] [jsonrpc][jsonrpc]
 
-[da-interface]: https://github.com/evolve/evolve/blob/main/core/da/da.go#L11
-[jsonrpc]: https://github.com/evolve/evolve/tree/main/da/jsonrpc
+[da-interface]: https://github.com/evstack/ev-node/blob/main/core/da/da.go#L11
+[jsonrpc]: https://github.com/evstack/ev-node/tree/main/da/jsonrpc

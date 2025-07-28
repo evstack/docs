@@ -4,7 +4,7 @@
 
 ## Sequencing Interface {#sequencing-interface}
 
-[Sequencing Interface](https://github.com/evolve/evolve/blob/main/core/sequencer/sequencing.go#L11) defines a sequencing interface for communicating between any sequencing network and Evolve. The key functions of the interface are defined as shown below.
+[Sequencing Interface](https://github.com/evstack/ev-node/blob/main/core/sequencer/sequencing.go#L11) defines a sequencing interface for communicating between any sequencing network and Evolve. The key functions of the interface are defined as shown below.
 
 ```go
 // Sequencer is a generic interface for a sequencer

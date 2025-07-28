@@ -146,7 +146,7 @@ export default withMermaid({
     },
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/evolve/evolve" },
+      { icon: "github", link: "https://github.com/evstack" },
       { icon: "twitter", link: "https://twitter.com/EvolveDev" },
       { icon: { svg: telegramSVG }, link: "https://t.me/evolve" },
     ],

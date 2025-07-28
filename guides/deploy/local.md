@@ -43,7 +43,7 @@ We will use the [local-da](https://github.com/evolve/local-da) for this tutorial
 
 To save time, we can use the local-da Dockerfile:
 
-* [local-da Dockerfile](https://github.com/evolve/evolve/blob/main/Dockerfile.da)
+* [local-da Dockerfile](https://github.com/evstack/ev-node/blob/main/Dockerfile.da)
 This will allow us to focus on how we can run the gm-world chain with Docker Compose.
 
 ### 🐳 Dockerfile {#dockerfile}
@@ -225,7 +225,6 @@ exit
 ```
 
 Then you can shut down your chain environment by running `CRTL+C` in your terminal.
-
 
 If you want to stop the docker containers without shutting down your terminal, you can run:
 

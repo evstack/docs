@@ -101,9 +101,9 @@ The block manager integrates with both services through:
 
 [4] [go-header][go-header]
 
-[sync-service]: https://github.com/evolve/evolve/blob/main/pkg/sync/sync_service.go
-[fullnode]: https://github.com/evolve/evolve/blob/main/node/full.go
-[lightnode]: https://github.com/evolve/evolve/blob/main/node/light.go
+[sync-service]: https://github.com/evstack/ev-node/blob/main/pkg/sync/sync_service.go
+[fullnode]: https://github.com/evstack/ev-node/blob/main/node/full.go
+[lightnode]: https://github.com/evstack/ev-node/blob/main/node/light.go
 [go-header]: https://github.com/celestiaorg/go-header
 [libp2p]: https://github.com/libp2p/go-libp2p
 [datastore]: https://github.com/ipfs/go-datastore

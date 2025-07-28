@@ -8,15 +8,9 @@ This isn't a toolkit. It's a launch stack.
 
 No fees. No middlemen. No revenue share.
 
-# About Evolve
+## About Evolve
 
 Our mission is to provide developers with the fastest path to launching their own networks. Built on Celestia, Evolve gives you full control over execution without the overhead of validator operations.
-
-::: tip
-In order to use Evolve, it's important to have some familiarity with Cosmos SDK. You can get up to speed on Cosmos SDK by visiting their [official documentation page](https://docs.cosmos.network/main).
-
-If you're familiar with Evolve, you may want to skip to the [guides section](/guides/gm-world.md).
-:::
 
 ## What is Evolve?
 
@@ -29,6 +23,7 @@ Evolve reframes the conversation: these aren't second-class layers. These are ne
 Evolve is an [open-source framework](https://github.com/evolve/evolve). It features ev-node, a modular node that can run networks and exposes an [ABCI-compatible client interface](https://github.com/cometbft/cometbft/tree/main/abci), which can be used as a substitute for CometBFT in any ABCI-compatible blockchain application.
 
 With Evolve, you get:
+
 - Full control over execution
 - No validator ops overhead  
 - Speed to traction

@@ -1,6 +1,6 @@
 # Execution Layers in Evolve
 
-Evolve is designed to be modular and flexible, allowing different execution layers to be plugged in. Evolve defines a general-purpose execution interface ([see execution.go](https://github.com/evolve/evolve/blob/main/core/execution/execution.go)) that enables developers to integrate any compatible application as the chain's execution layer.
+Evolve is designed to be modular and flexible, allowing different execution layers to be plugged in. Evolve defines a general-purpose execution interface ([see execution.go](https://github.com/evstack/ev-node/blob/main/core/execution/execution.go)) that enables developers to integrate any compatible application as the chain's execution layer.
 
 This means you can use a variety of Cosmos SDK or Reth compatible applications as the execution environment for your chain: choose the execution environment that best fits your use case.
 

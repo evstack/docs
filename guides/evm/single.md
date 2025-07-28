@@ -18,7 +18,7 @@ Before starting, ensure you have:
 ### 1. Clone the Evolve Repository
 
 ```bash
-git clone --depth 1 --branch {{constants.evolveLatestTag}} https://github.com/evolve/evolve.git
+git clone --depth 1 --branch {{constants.evolveLatestTag}} https://github.com/evstack/ev-node.git
 cd evolve
 ```
 

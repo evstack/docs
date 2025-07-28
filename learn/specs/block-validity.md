@@ -83,14 +83,14 @@ SignedHeader.Verify(untrustedHeader *SignedHeader)
     // Note: ValidatorHash field exists for compatibility but is not validated
 ```
 
-## [Data](https://github.com/evolve/evolve/blob/main/types/data.go)
+## [Data](https://github.com/evstack/ev-node/blob/main/types/data.go)
 
 | **Field Name** | **Valid State**                         | **Validation**                     |
 |----------------|-----------------------------------------|------------------------------------|
 | Txs            | Transaction data of the block           | Data.Hash() == SignedHeader.DataHash |
 | Metadata       | Optional p2p gossiping metadata         | Not validated                       |
 
-## [SignedHeader](https://github.com/evolve/evolve/blob/main/types/signed_header.go)
+## [SignedHeader](https://github.com/evstack/ev-node/blob/main/types/signed_header.go)
 
 | **Field Name** | **Valid State**                                                          | **Validation**                                                                              |
 |----------------|--------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
@@ -99,7 +99,7 @@ SignedHeader.Verify(untrustedHeader *SignedHeader)
 | Signer         | Information about who signed the header                                  | Must match ProposerAddress if not empty (based chain case)                                |
 | verifier       | Optional custom signature verification function                          | Used instead of default verification if set                                                 |
 
-## [Header](https://github.com/evolve/evolve/blob/main/types/header.go)
+## [Header](https://github.com/evstack/ev-node/blob/main/types/header.go)
 
 ***Note***: Evolve has moved to a single signer model. The multi-validator architecture has been replaced with a simpler single sequencer approach.
 
@@ -120,7 +120,7 @@ SignedHeader.Verify(untrustedHeader *SignedHeader)
 | ProposerAddress     | Address of the expected proposer                                                           | Must match Signer.Address in SignedHeader |
 | ValidatorHash       | Compatibility field for Tendermint light client                                            | Not validated                             |
 
-## [Signer](https://github.com/evolve/evolve/blob/main/types/signed_header.go)
+## [Signer](https://github.com/evstack/ev-node/blob/main/types/signed_header.go)
 
 The Signer type replaces the previous ValidatorSet for single sequencer operation:
 
