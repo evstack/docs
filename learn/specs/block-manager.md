@@ -97,7 +97,7 @@ The block manager is initialized using several parameters as defined below:
 signing key|crypto.PrivKey|used for signing blocks and data after creation
 config|config.BlockManagerConfig|block manager configurations (see config options below)
 genesis|*cmtypes.GenesisDoc|initialize the block manager with genesis state (genesis configuration defined in `config/genesis.json` file under the app directory)
-store|store.Store|local datastore for storing chain blocks and states (default local store path is `$db_dir/rollkit` and `db_dir` specified in the `config.yaml` file under the app directory)
+store|store.Store|local datastore for storing chain blocks and states (default local store path is `$db_dir/evolve` and `db_dir` specified in the `config.yaml` file under the app directory)
 mempool, proxyapp, eventbus|mempool.Mempool, proxy.AppConnConsensus, *cmtypes.EventBus|for initializing the executor (state transition function). mempool is also used in the manager to check for availability of transactions for lazy block production
 dalc|da.DAClient|the data availability light client used to submit and retrieve blocks to DA network
 headerStore|*goheaderstore.Store[*types.SignedHeader]|to store and retrieve block headers gossiped over the P2P network
@@ -318,12 +318,12 @@ For more details on DA integration, see the [Data Availability specification](./
 
 #### Out-of-Order Chain Blocks on DA
 
-Rollkit should support blocks arriving out-of-order on DA, like so:
+Evolve should support blocks arriving out-of-order on DA, like so:
 ![out-of-order blocks](./out-of-order-blocks.png)
 
 #### Termination Condition
 
-If the sequencer double-signs two blocks at the same height, evidence of the fault should be posted to DA. Rollkit full nodes should process the longest valid chain up to the height of the fault evidence, and terminate. See diagram:
+If the sequencer double-signs two blocks at the same height, evidence of the fault should be posted to DA. Evolve full nodes should process the longest valid chain up to the height of the fault evidence, and terminate. See diagram:
 ![termination condition](./termination.png)
 
 ### Block Sync Service
@@ -408,7 +408,7 @@ The `DAIncluderLoop` is responsible for advancing the `DAIncludedHeight` by:
 * Checking if blocks after the current height have both header and data marked as DA-included in caches
 * Stopping advancement if either header or data is missing for a height
 * Calling `SetFinal` on the executor when a block becomes DA-included
-* Storing the Rollkit height to DA height mapping for tracking
+* Storing the Evolve height to DA height mapping for tracking
 * Ensuring only blocks with both header and data present are considered DA-included
 
 ### State Update after Block Retrieval
@@ -515,8 +515,8 @@ The communication with DA layer:
 * Block sync over the P2P network works only when a full node is connected to the P2P network by specifying the initial seeds to connect to via `P2PConfig.Seeds` configuration parameter when starting the full node.
 * Node's context is passed down to all components to support graceful shutdown and cancellation.
 * The block manager supports custom signature payload providers for headers, enabling flexible signing schemes.
-* The block manager supports the separation of header and data structures in Rollkit. This allows for expanding the sequencing scheme beyond single sequencing and enables the use of a decentralized sequencer mode. For detailed information on this architecture, see the [Header and Data Separation ADR](../../lazy-adr/adr-014-header-and-data-separation.md).
-* The block manager processes blocks with a minimal header format, which is designed to eliminate dependency on CometBFT's header format and can be used to produce an execution layer tailored header if needed. For details on this header structure, see the [Rollkit Minimal Header](../../lazy-adr/adr-015-rollkit-minimal-header.md) specification.
+* The block manager supports the separation of header and data structures in Evolve. This allows for expanding the sequencing scheme beyond single sequencing and enables the use of a decentralized sequencer mode. For detailed information on this architecture, see the [Header and Data Separation ADR](../../lazy-adr/adr-014-header-and-data-separation.md).
+* The block manager processes blocks with a minimal header format, which is designed to eliminate dependency on CometBFT's header format and can be used to produce an execution layer tailored header if needed. For details on this header structure, see the [Evolve Minimal Header](../../lazy-adr/adr-015-evolve-minimal-header.md) specification.
 
 ## Metrics
 
@@ -581,7 +581,7 @@ See [tutorial] for running a multi-node network with both sequencer and non-sequ
 
 [6] [Header and Data Separation ADR](../../lazy-adr/adr-014-header-and-data-separation.md)
 
-[7] [Rollkit Minimal Header](../../lazy-adr/adr-015-rollkit-minimal-header.md)
+[7] [Evolve Minimal Header](../../lazy-adr/adr-015-evolve-minimal-header.md)
 
 [8] [Data Availability](./da.md)
 

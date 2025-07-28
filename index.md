@@ -4,12 +4,9 @@ layout: home
 titleTemplate: ':title'
 
 hero:
-  name: "Rollkit"
-  text: "The unstoppable stack"
-  tagline: Launch an unstoppable blockchain as easily as a smart contract
-  image:
-    src: /img/logo-big.svg
-    alt: Rollkit
+  name: "Evolve"
+  text: "Launch Fast. Build Your Own Network."
+  tagline: Modular. Production-ready. Yours. Built on Celestia, Evolve enables developers a direct path to shipping custom networks.
   actions:
     - theme: brand
       text: Quick start 
@@ -19,16 +16,16 @@ hero:
       link: /learn/about
 
 features:
-  - title: Build with the Best
-    details: Utilize all the existing powerful tooling in the Cosmos ecosystem including IBC, ABCI++, and CometBFT RPC equivalency.
-    link: /learn/about#why-rollkit
-    icon: ✨
-  - title: Optimize for your needs
-    details: Take full advantage of modularity by optimizing your rollup to your needs. Tailor your block production. Choose your VM. Pick your DA layer.
+  - title: Full Control Over Execution
+    details: Design your network exactly how you want it. Choose your VM, customize your execution environment, and maintain complete control without middlemen or revenue share.
+    link: /learn/about#why-evolve
+    icon: 🚀
+  - title: Speed to Traction
+    details: Launch faster than standing up a full L1, and more flexible than constrained rollup frameworks. Get to market quickly with production-ready infrastructure.
     link: /learn/stack
-    icon: ⚙️
-  - title: Take Control
-    details: Retain the ability to upgrade via hard forks. Break free of offchain councils holding upgrade keys. Allow your community to be sovereign.
+    icon: ⚡
+  - title: No Validator Overhead
+    details: Skip the complexity of running validators. Focus on building your application while Celestia handles consensus and data availability.
     link: /learn/about
-    icon: 🎮
+    icon: 🛡️
 ---

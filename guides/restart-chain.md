@@ -1,6 +1,6 @@
 # 🔄 How to restart your chain
 
-This guide will teach you how to restart your Rollkit chain.
+This guide will teach you how to restart your Evolve chain.
 
 ## Restart chain
 
@@ -39,7 +39,7 @@ I[2024-10-17|14:52:13.845] executed block                               module=B
 I[2024-10-17|14:52:13.845] indexed block events                         module=txindex height=8
 ```
 
-It is important to include any additional flags that you used when you first started your chain. For example, if you used the `--rollkit.da.namespace` flag, you will need to include that flag when restarting your chain to ensure your chain continues to publish blobs to the same namespace.
+It is important to include any additional flags that you used when you first started your chain. For example, if you used the `--evolve.da.namespace` flag, you will need to include that flag when restarting your chain to ensure your chain continues to publish blobs to the same namespace.
 
 ## Restart chain after running out of funds
 
@@ -58,7 +58,7 @@ error. This error is defined by Cosmos SDK as:
 ErrTxInMempoolCache = Register(RootCodespace, 19, "tx already in mempool")
 ```
 
-In order to get around this error, and the same error on other Rollkit chains, you will need to re-fund your Celestia account and increase the gas fee. This will override the transaction that is stuck in the mempool.
+In order to get around this error, and the same error on other Evolve chains, you will need to re-fund your Celestia account and increase the gas fee. This will override the transaction that is stuck in the mempool.
 
 If you top up the balance of your node and don't increase the gas fee, you will still encounter the `Code: 19` error because there is a transaction (posting block to DA) that is duplicate to one that already exists. In order to get around this, you'll need to increase the gas fee and restart the chain.
 
@@ -98,4 +98,4 @@ Follow the [restart chain](#restart-chain) section above.
 
 In order to save your TIA, we also recommend stopping the chain with `Control + C`, changing the gas fee back to the default (in our case, 8000 utia) and restarting the chain:
 
-🎊 Congrats! You've successfully restarted your Rollkit chain after running out of TIA.
+🎊 Congrats! You've successfully restarted your Evolve chain after running out of TIA.

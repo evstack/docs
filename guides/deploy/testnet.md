@@ -1,8 +1,8 @@
-# 🚀 Rollkit EVM Deployment Guide
+# 🚀 Evolve EVM Deployment Guide
 
-This tutorial is going to show you how to deploy a Rollkit testnet, focusing on the architecture choices and components that make up a complete EVM-based chain deployment.
+This tutorial is going to show you how to deploy a Evolve testnet, focusing on the architecture choices and components that make up a complete EVM-based chain deployment.
 
-You can learn more about Rollkit EVM architecture [here](/learn/execution.md).
+You can learn more about Evolve EVM architecture [here](/learn/execution.md).
 
 <!-- markdownlint-disable MD033 -->
 <script setup>
@@ -23,26 +23,26 @@ The following diagram illustrates the complete deployment architecture with comp
 graph TB
     subgraph "Sequencer Stack"
         SEQ_RETH[RETH Service]
-        SEQ_ROLLKIT[ROLLKIT Service<br/>--aggregator=true]
-        SEQ_RETH <--> SEQ_ROLLKIT
+        SEQ_EVOLVE[EVOLVE Service<br/>--aggregator=true]
+        SEQ_RETH <--> SEQ_EVOLVE
     end
 
     subgraph "Full Node Stack 1"
         FN1_RETH[RETH Service]
-        FN1_ROLLKIT[ROLLKIT Service<br/>--aggregator=false]
-        FN1_RETH <--> FN1_ROLLKIT
+        FN1_EVOLVE[EVOLVE Service<br/>--aggregator=false]
+        FN1_RETH <--> FN1_EVOLVE
     end
 
     subgraph "Full Node Stack 2"
         FN2_RETH[RETH Service]
-        FN2_ROLLKIT[ROLLKIT Service<br/>--aggregator=false]
-        FN2_RETH <--> FN2_ROLLKIT
+        FN2_EVOLVE[EVOLVE Service<br/>--aggregator=false]
+        FN2_RETH <--> FN2_EVOLVE
     end
 
     subgraph "Full Node Stack 3"
         FN3_RETH[RETH Service]
-        FN3_ROLLKIT[ROLLKIT Service<br/>--aggregator=false]
-        FN3_RETH <--> FN3_ROLLKIT
+        FN3_EVOLVE[EVOLVE Service<br/>--aggregator=false]
+        FN3_RETH <--> FN3_EVOLVE
     end
 
     subgraph "Celestia DA Stack"
@@ -51,19 +51,19 @@ graph TB
         CELESTIA_APP <--> CELESTIA_NODE
     end
 
-    %% P2P connections between Rollkit nodes
-    SEQ_ROLLKIT <--> FN1_ROLLKIT
-    SEQ_ROLLKIT <--> FN2_ROLLKIT
-    SEQ_ROLLKIT <--> FN3_ROLLKIT
-    FN1_ROLLKIT <--> FN2_ROLLKIT
-    FN2_ROLLKIT <--> FN3_ROLLKIT
-    FN1_ROLLKIT <--> FN3_ROLLKIT
+    %% P2P connections between Evolve nodes
+    SEQ_EVOLVE <--> FN1_EVOLVE
+    SEQ_EVOLVE <--> FN2_EVOLVE
+    SEQ_EVOLVE <--> FN3_EVOLVE
+    FN1_EVOLVE <--> FN2_EVOLVE
+    FN2_EVOLVE <--> FN3_EVOLVE
+    FN1_EVOLVE <--> FN3_EVOLVE
 
     %% DA connections
-    SEQ_ROLLKIT -->|Post Blobs<br/>Auth Token| CELESTIA_NODE
-    FN1_ROLLKIT -->|Retrieve Blobs<br/>Auth Token| CELESTIA_NODE
-    FN2_ROLLKIT -->|Retrieve Blobs<br/>Auth Token| CELESTIA_NODE
-    FN3_ROLLKIT -->|Retrieve Blobs<br/>Auth Token| CELESTIA_NODE
+    SEQ_EVOLVE -->|Post Blobs<br/>Auth Token| CELESTIA_NODE
+    FN1_EVOLVE -->|Retrieve Blobs<br/>Auth Token| CELESTIA_NODE
+    FN2_EVOLVE -->|Retrieve Blobs<br/>Auth Token| CELESTIA_NODE
+    FN3_EVOLVE -->|Retrieve Blobs<br/>Auth Token| CELESTIA_NODE
 
     %% User interactions
     USERS[Users/Applications] --> FN1_RETH
@@ -75,15 +75,15 @@ graph TB
     classDef celestia fill:#fff3e0
     classDef user fill:#e8f5e8
 
-    class SEQ_RETH,SEQ_ROLLKIT sequencer
-    class FN1_RETH,FN1_ROLLKIT,FN2_RETH,FN2_ROLLKIT,FN3_RETH,FN3_ROLLKIT fullnode
+    class SEQ_RETH,SEQ_EVOLVE sequencer
+    class FN1_RETH,FN1_EVOLVE,FN2_RETH,FN2_EVOLVE,FN3_RETH,FN3_EVOLVE fullnode
     class CELESTIA_APP,CELESTIA_NODE celestia
     class USERS user
 ```
 
 **Key Interactions:**
-- **Engine API**: RETH ↔ ROLLKIT communication within each stack
-- **P2P Network**: ROLLKIT nodes sync blocks and share chain state
+- **Engine API**: RETH ↔ EVOLVE communication within each stack
+- **P2P Network**: EVOLVE nodes sync blocks and share chain state
 - **Data Availability**: Sequencer posts blobs, full nodes retrieve blobs from Celestia
 - **User Access**: Applications connect to full node RETH services for JSON-RPC access
 
@@ -95,9 +95,9 @@ Make sure you understand the sequencing topology you want to use by reading the 
 
 ### 🔄 Choosing Your Sequencing Topology {#choosing-sequencing-topology}
 
-First, you need to choose a sequencing topology for your Rollkit EVM chain. The sequencing topology determines how transactions are ordered and blocks are produced in your chain.
+First, you need to choose a sequencing topology for your Evolve EVM chain. The sequencing topology determines how transactions are ordered and blocks are produced in your chain.
 
-Currently, Rollkit supports one sequencing implementation:
+Currently, Evolve supports one sequencing implementation:
 
 ### 🔄 Single Sequencer
 - **Description**: The simplest sequencing architecture where one node is responsible for ordering transactions and producing blocks
@@ -128,9 +128,9 @@ In a single sequencer deployment, you will run:
 
 In addition to choosing your sequencing topology, we need to understand the components that make up your deployment.
 
-We will use a combination of RETH and ROLLKIT services for this tutorial and run them together to create your EVM chain.
+We will use a combination of RETH and EVOLVE services for this tutorial and run them together to create your EVM chain.
 
-Each node in your Rollkit EVM deployment (whether sequencer or full node) consists of two primary services working together:
+Each node in your Evolve EVM deployment (whether sequencer or full node) consists of two primary services working together:
 
 ### ⚡ RETH Service
 - **Purpose**: Provides the Ethereum Virtual Machine (EVM) execution environment
@@ -141,9 +141,9 @@ Each node in your Rollkit EVM deployment (whether sequencer or full node) consis
   - Providing Ethereum JSON-RPC API endpoints
   - Managing the execution layer consensus
 
-### 🔗 ROLLKIT Service
+### 🔗 EVOLVE Service
 - **Purpose**: Handles chain-specific functionality and consensus
-- **Technology**: Rollkit node implementation
+- **Technology**: Evolve node implementation
 - **Responsibilities**:
   - Block production and validation
   - Data availability integration
@@ -155,51 +155,51 @@ Each node in your Rollkit EVM deployment (whether sequencer or full node) consis
 
 The two services work together through well-defined interfaces:
 
-1. **Engine API**: Rollkit communicates with RETH using the Engine API (typically on port 8551)
+1. **Engine API**: Evolve communicates with RETH using the Engine API (typically on port 8551)
 2. **JWT Authentication**: Secure communication between services using shared JWT secrets
-3. **Block Coordination**: Rollkit orchestrates block production while RETH executes transactions
+3. **Block Coordination**: Evolve orchestrates block production while RETH executes transactions
 
 ## ⚙️ Node Configurations {#node-configurations}
 
 ### 🎯 Sequencer Node Configuration
-The single sequencer node runs both RETH and ROLLKIT services with specific settings:
-- **RETH**: Configured to accept blocks from the Rollkit sequencer
-- **ROLLKIT**: Configured with `--rollkit.node.aggregator=true` to enable block production
+The single sequencer node runs both RETH and EVOLVE services with specific settings:
+- **RETH**: Configured to accept blocks from the Evolve sequencer
+- **EVOLVE**: Configured with `--evolve.node.aggregator=true` to enable block production
 - **Role**: Produces blocks, orders transactions, posts to DA layer
 
 ### 📡 Full Node Configuration
-Each full node also runs both RETH and ROLLKIT services but in sync mode:
+Each full node also runs both RETH and EVOLVE services but in sync mode:
 - **RETH**: Configured to process blocks received from the network
-- **ROLLKIT**: Configured with `--rollkit.node.aggregator=false` to sync from the sequencer
+- **EVOLVE**: Configured with `--evolve.node.aggregator=false` to sync from the sequencer
 - **Role**: Syncs blocks, serves queries, provides redundancy
 
 ### 🔑 Key Integration Points
 
 All nodes require:
 - Shared JWT secret for Engine API authentication
-- Matching genesis configuration between ROLLKIT nodes
+- Matching genesis configuration between EVOLVE nodes
 - Proper network configuration for service communication
-- Coordinated startup sequence (typically RETH first, then ROLLKIT)
+- Coordinated startup sequence (typically RETH first, then EVOLVE)
 
 ### ⏰ Block Time Configuration
 
-You can customize timing parameters for your chain. While there are many configuration arguments available for the Rollkit binary, two important timing-related flags are:
+You can customize timing parameters for your chain. While there are many configuration arguments available for the Evolve binary, two important timing-related flags are:
 
 #### 🎯 Sequencer Block Time
-- **Flag**: `--rollkit.node.block_time`
+- **Flag**: `--evolve.node.block_time`
 - **Default**: 1s (1 block per second)
 - **Purpose**: Controls how frequently the sequencer produces new blocks
 - **Customization**: Can be adjusted based on throughput requirements and latency preferences
 
 #### 📊 Data Availability Block Time
-- **Flag**: `--rollkit.da.block_time`
+- **Flag**: `--evolve.da.block_time`
 - **Default**: 6s
 - **Purpose**: Controls how frequently blobs are posted to the Celestia chain
 - **Function**: Each 6 seconds (by default), batched block data is submitted to Celestia for data availability
 
 ## 🌌 Data Availability Layer: Celestia {#celestia-da}
 
-Your Rollkit EVM chain connects to Celestia as the Data Availability (DA) layer. The Rollkit EVM Celestia DA stack consists of two key services:
+Your Evolve EVM chain connects to Celestia as the Data Availability (DA) layer. The Evolve EVM Celestia DA stack consists of two key services:
 
 ### 🏛️ Celestia-App Service
 - **Purpose**: Provides the consensus layer for the Celestia network
@@ -218,20 +218,20 @@ Your Rollkit EVM chain connects to Celestia as the Data Availability (DA) layer.
 
 ### 🔗 Celestia Integration
 
-Both sequencer and full node Rollkit services need to communicate with the celestia-node service, but for different purposes:
+Both sequencer and full node Evolve services need to communicate with the celestia-node service, but for different purposes:
 
 #### 📤 Sequencer Node Communication
 - **Purpose**: Batch posting of block data (blobs) to Celestia
-- **Operation**: The sequencer Rollkit service submits batched block data to Celestia via the celestia-node API
+- **Operation**: The sequencer Evolve service submits batched block data to Celestia via the celestia-node API
 - **Frequency**: Occurs regularly as new blocks are produced and need to be made available
 
 #### 📥 Full Node Communication
 - **Purpose**: Retrieving block data (blobs) from Celestia
-- **Operation**: Full node Rollkit services query and download historical block data via the celestia-node API
+- **Operation**: Full node Evolve services query and download historical block data via the celestia-node API
 - **Frequency**: Occurs during initial sync and ongoing block validation
 
 #### 🔑 Common Integration Points
-1. **Authentication**: Rollkit requires an auth token generated by the celestia-node so that Rollkit can send transactions on its behalf. Both sequencer and full node types use these JWT tokens for secure communication with celestia-node
+1. **Authentication**: Evolve requires an auth token generated by the celestia-node so that Evolve can send transactions on its behalf. Both sequencer and full node types use these JWT tokens for secure communication with celestia-node
 2. **Namespace Isolation**: Data is organized using Celestia namespaces
 3. **API Endpoints**: Both sequencer and full nodes use the same celestia-node API interface
 4. **Network Configuration**: All nodes must be configured to connect to the same Celestia network
@@ -243,19 +243,19 @@ When deploying with Celestia DA:
 - **Network Selection**: Choose between Arabica (devnet), Mocha (testnet), or Mainnet Beta
 - **Funding**: Ensure your celestia-node wallet has sufficient TIA tokens for data submission
 
-We now have all we need to understand the components for deploying a Rollkit EVM chain.
+We now have all we need to understand the components for deploying a Evolve EVM chain.
 
-### 🚀 Run your Rollkit EVM chain {#run-rollkit-evm-chain}
+### 🚀 Run your Evolve EVM chain {#run-evolve-evm-chain}
 
-A complete Rollkit EVM chain deployment consists of:
+A complete Evolve EVM chain deployment consists of:
 
-1. **One Sequencer Node**: RETH + ROLLKIT (aggregator mode)
-2. **N Full Nodes**: RETH + ROLLKIT (sync mode) - scale as needed
+1. **One Sequencer Node**: RETH + EVOLVE (aggregator mode)
+2. **N Full Nodes**: RETH + EVOLVE (sync mode) - scale as needed
 3. **Celestia Connection**: celestia-node service for data availability
 
 You can deploy your chain by running the sequencer and full nodes with the proper configuration.
 
-Congratulations! You have successfully understood how to deploy a Rollkit EVM chain.
+Congratulations! You have successfully understood how to deploy a Evolve EVM chain.
 
 ## 🐳 Simplified Deployment with Docker Compose {#docker-compose-deployment}
 
@@ -263,7 +263,7 @@ The deployment of sequencer and full nodes requires running multiple processes a
 
 To save time, we can use ready-to-use Docker Compose stacks that can be customized based on specific needs. These pre-configured stacks handle the complexity of service orchestration, environment variable management, and inter-service communication automatically.
 
-To make this deployment process easy and painless for node operators, you can use the example implementation available at: [https://github.com/rollkit/ops-toolbox/tree/main/ev-stacks](https://github.com/rollkit/ops-toolbox/tree/main/ev-stacks/)
+To make this deployment process easy and painless for node operators, you can use the example implementation available at: [https://github.com/evolve/ops-toolbox/tree/main/ev-stacks](https://github.com/evolve/ops-toolbox/tree/main/ev-stacks/)
 
 This solution provides:
 - Pre-configured Docker Compose files for sequencer and full node deployments
@@ -278,7 +278,7 @@ This deployment approach is suitable for testnets and development environments, 
 
 ## 🎉 Next steps
 
-Congratulations again! You now know how to deploy Rollkit EVM chains and understand the architecture and components needed.
+Congratulations again! You now know how to deploy Evolve EVM chains and understand the architecture and components needed.
 
 For detailed setup instructions, see:
 - [Single Sequencer Setup Guide](/guides/evm/single.md) - Step-by-step deployment instructions

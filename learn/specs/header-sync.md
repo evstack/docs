@@ -2,7 +2,7 @@
 
 ## Abstract
 
-The nodes in the P2P network sync headers and data using separate sync services that implement the [go-header][go-header] interface. Rollkit uses a header/data separation architecture where headers and transaction data are synchronized independently through parallel services. Each sync service consists of several components as listed below.
+The nodes in the P2P network sync headers and data using separate sync services that implement the [go-header][go-header] interface. Evolve uses a header/data separation architecture where headers and transaction data are synchronized independently through parallel services. Each sync service consists of several components as listed below.
 
 |Component|Description|
 |---|---|
@@ -14,7 +14,7 @@ The nodes in the P2P network sync headers and data using separate sync services 
 
 ## Details
 
-Rollkit implements two separate sync services:
+Evolve implements two separate sync services:
 
 ### Header Sync Service
 
@@ -101,9 +101,9 @@ The block manager integrates with both services through:
 
 [4] [go-header][go-header]
 
-[sync-service]: https://github.com/rollkit/rollkit/blob/main/pkg/sync/sync_service.go
-[fullnode]: https://github.com/rollkit/rollkit/blob/main/node/full.go
-[lightnode]: https://github.com/rollkit/rollkit/blob/main/node/light.go
+[sync-service]: https://github.com/evolve/evolve/blob/main/pkg/sync/sync_service.go
+[fullnode]: https://github.com/evolve/evolve/blob/main/node/full.go
+[lightnode]: https://github.com/evolve/evolve/blob/main/node/light.go
 [go-header]: https://github.com/celestiaorg/go-header
 [libp2p]: https://github.com/libp2p/go-libp2p
 [datastore]: https://github.com/ipfs/go-datastore

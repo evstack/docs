@@ -1,14 +1,14 @@
-# Rollkit EVM reth State Backup Guide
+# Evolve EVM reth State Backup Guide
 
 ## Introduction
 
-This guide covers how to backup the reth state of a Rollkit EVM based blockchain. This implementation provides a production-ready approach to data protection.
+This guide covers how to backup the reth state of a Evolve EVM based blockchain. This implementation provides a production-ready approach to data protection.
 
 ## Prerequisites
 
 Before starting, ensure you have:
 
-- A running Rollkit full node - Follow the [Rollkit Full Node Setup Guide](https://rollkit.dev/guides/full-node) to set up your node
+- A running Evolve full node - Follow the [Evolve Full Node Setup Guide](https://evolve.dev/guides/full-node) to set up your node
 - Zstandard (zstd) compression tool installed
 - jq JSON processor installed
 - Administrative access to the Docker host
@@ -40,12 +40,12 @@ Reth datadir : contains the entire EVM state and node data.
 ### 1. Verify Node Synchronization
 
 ```bash
-# Check Rollkit node status
+# Check Evolve node status
 curl -sX POST \
   -H "Content-Type: application/json" \
   -H "Connect-Protocol-Version: 1" \
   -d "{}" \
-  http://<FULLNODE_IP>:<FULLNODE_RPC_PORT>/rollkit.v1.HealthService/Livez
+  http://<FULLNODE_IP>:<FULLNODE_RPC_PORT>/evolve.v1.HealthService/Livez
 
 # Verify reth sync status
 curl -sX POST \
@@ -59,13 +59,13 @@ curl -sX POST \
 
 ### 2. Stop Services Gracefully
 
-You will need to stop both rollkit and reth-rollkit on the fullnode stack, according to your setup.
+You will need to stop both evolve and reth-evolve on the fullnode stack, according to your setup.
 
 Example for docker-compose based setup:
 ```bash
 # Stop services in correct order
 docker compose stop fullnode
-docker compose stop reth-rollkit
+docker compose stop reth-evolve
 
 # Verify all containers are stopped
 docker compose ps
@@ -76,16 +76,16 @@ docker compose ps
 ```bash
 # Create backup directory
 # Create backup directory
-# IMPORTANT: Set your backup base directory and reth-rollkit data directory paths
+# IMPORTANT: Set your backup base directory and reth-evolve data directory paths
 BACKUP_BASE_DIR="/path/to/backups"
-RETH_ROLLKIT_DATADIR="/path/to/reth-rollkit/datadir"
+RETH_EVOLVE_DATADIR="/path/to/reth-evolve/datadir"
 mkdir -p "${BACKUP_BASE_DIR}"
 
 # Set backup timestamp
 BACKUP_DATE=$(date +%Y%m%d_%H%M%S)
 
-# Backup reth-rollkit datadir using zstandard compression
-tar cf - -C "${RETH_ROLLKIT_DATADIR}" . | zstd -3 > "${BACKUP_BASE_DIR}/reth_state_${BACKUP_DATE}.tar.zst"
+# Backup reth-evolve datadir using zstandard compression
+tar cf - -C "${RETH_EVOLVE_DATADIR}" . | zstd -3 > "${BACKUP_BASE_DIR}/reth_state_${BACKUP_DATE}.tar.zst"
 
 # Generate checksum
 sha256sum "${BACKUP_BASE_DIR}/reth_state_${BACKUP_DATE}.tar.zst" > "${BACKUP_BASE_DIR}/reth_state_${BACKUP_DATE}.tar.zst.sha256"
@@ -93,7 +93,7 @@ sha256sum "${BACKUP_BASE_DIR}/reth_state_${BACKUP_DATE}.tar.zst" > "${BACKUP_BAS
 
 ### 4. Restart services
 
-You will need to restart both rollkit and reth-rollkit on the fullnode stack, according to your setup.
+You will need to restart both evolve and reth-evolve on the fullnode stack, according to your setup.
 
 Example for docker-compose based setup:
 ```bash
@@ -109,20 +109,20 @@ docker compose logs -f
 ### 1. Create the Backup Script
 
 ```bash
-sudo nano /usr/local/bin/rollkit-backup.sh
+sudo nano /usr/local/bin/evolve-backup.sh
 ```
 Add the following content
 
 ```bash
 #!/bin/bash
-# Reth-Rollkit Backup Script with Zstandard Compression
+# Reth-Evolve Backup Script with Zstandard Compression
 
 set -euo pipefail
 
 # Configuration
-RETH_ROLLKIT_DATADIR="" # IMPORTANT: Set this to your reth-rollkit data directory path
-BACKUP_BASE_DIR="${BACKUP_BASE_DIR:-/backup/rollkit}"
-REMOTE_BACKUP="${REMOTE_BACKUP:-backup-server:/backups/rollkit}"
+RETH_EVOLVE_DATADIR="" # IMPORTANT: Set this to your reth-evolve data directory path
+BACKUP_BASE_DIR="${BACKUP_BASE_DIR:-/backup/evolve}"
+REMOTE_BACKUP="${REMOTE_BACKUP:-backup-server:/backups/evolve}"
 RETENTION_DAYS="${RETENTION_DAYS:-7}"
 COMPOSE_FILE="${COMPOSE_FILE:-docker-compose.yml}"
 ZSTD_LEVEL="${ZSTD_LEVEL:-3}"
@@ -138,12 +138,12 @@ log() {
 }
 
 check_sync_status() {
-    # Check Rollkit node health
+    # Check Evolve node health
     curl -fsX POST \
         -H "Content-Type: application/json" \
         -H "Connect-Protocol-Version: 1" \
         -d "{}" \
-        "http://${FULLNODE_IP}:${FULLNODE_RPC_PORT}/rollkit.v1.HealthService/Livez" > /dev/null
+        "http://${FULLNODE_IP}:${FULLNODE_RPC_PORT}/evolve.v1.HealthService/Livez" > /dev/null
 
     # Check reth sync status
     local sync_status=$(curl -sX POST \
@@ -158,7 +158,7 @@ check_sync_status() {
 
 # Main backup process
 main() {
-    log "Starting Rollkit backup process"
+    log "Starting Evolve backup process"
 
     # Setup
     BACKUP_DATE=$(date +%Y%m%d_%H%M%S)
@@ -171,13 +171,13 @@ main() {
     check_sync_status
 
     # Stop services
-    log "Stopping Rollkit services"
+    log "Stopping Evolve services"
     docker compose -f ${COMPOSE_FILE} stop fullnode
-    docker compose -f ${COMPOSE_FILE} stop reth-rollkit
+    docker compose -f ${COMPOSE_FILE} stop reth-evolve
 
     # Backup reth state using zstandard compression
     log "Backing up reth state with zstandard compression"
-    tar cf - -C ${RETH_ROLLKIT_DATADIR} . | zstd -${ZSTD_LEVEL} -T${ZSTD_THREADS} > "${BACKUP_DIR}/reth_state_${BACKUP_DATE}.tar.zst"
+    tar cf - -C ${RETH_EVOLVE_DATADIR} . | zstd -${ZSTD_LEVEL} -T${ZSTD_THREADS} > "${BACKUP_DIR}/reth_state_${BACKUP_DATE}.tar.zst"
 
     # Generate checksum
     sha256sum "${BACKUP_DIR}/reth_state_${BACKUP_DATE}.tar.zst" > "${BACKUP_DIR}/reth_state_${BACKUP_DATE}.tar.zst.sha256"
@@ -207,7 +207,7 @@ main "$@"
 ### 2. Make Script Executable'
 
 ```bash
-sudo chmod +x /usr/local/bin/rollkit-backup.sh
+sudo chmod +x /usr/local/bin/evolve-backup.sh
 ```
 
 ### 3. Schedule Automated Backups
@@ -217,7 +217,7 @@ sudo chmod +x /usr/local/bin/rollkit-backup.sh
 sudo crontab -e
 
 # Add daily backup at 2 AM
-0 2 * * * /usr/local/bin/rollkit-backup.sh >> /var/log/rollkit-backup.log 2>&1
+0 2 * * * /usr/local/bin/evolve-backup.sh >> /var/log/evolve-backup.log 2>&1
 ```
 
 ## Best practices

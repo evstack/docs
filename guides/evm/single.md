@@ -1,8 +1,8 @@
-# Rollkit EVM Single Sequencer Setup Guide
+# Evolve EVM Single Sequencer Setup Guide
 
 ## Introduction
 
-This guide covers how to set up and run the Single Sequencer implementation of Rollkit EVM chains. This implementation provides a centralized approach to transaction sequencing while using EVM as the execution layer.
+This guide covers how to set up and run the Single Sequencer implementation of Evolve EVM chains. This implementation provides a centralized approach to transaction sequencing while using EVM as the execution layer.
 
 ## Prerequisites
 
@@ -15,14 +15,14 @@ Before starting, ensure you have:
 
 ## Setting Up the Environment
 
-### 1. Clone the Rollkit Repository
+### 1. Clone the Evolve Repository
 
 ```bash
-git clone --depth 1 --branch {{constants.rollkitLatestTag}} https://github.com/rollkit/rollkit.git
-cd rollkit
+git clone --depth 1 --branch {{constants.evolveLatestTag}} https://github.com/evolve/evolve.git
+cd evolve
 ```
 
-### 2. Build the Rollkit EVM Single Sequencer Implementation
+### 2. Build the Evolve EVM Single Sequencer Implementation
 
 ```bash
 make build-evm-single
@@ -50,7 +50,7 @@ This will start a local DA node on the default port (26658).
 ### 1. Clone the go-execution-evm Repository
 
 ```bash
-git clone https://github.com/rollkit/go-execution-evm.git
+git clone https://github.com/evolve/go-execution-evm.git
 cd go-execution-evm
 git checkout op-geth
 ```
@@ -61,7 +61,7 @@ git checkout op-geth
 docker compose up -d
 ```
 
-This will start Reth (Rust Ethereum client) with the appropriate configuration for Rollkit.
+This will start Reth (Rust Ethereum client) with the appropriate configuration for Evolve.
 
 ### 3. Note the JWT Secret Path
 
@@ -73,7 +73,7 @@ The JWT secret is typically located at `go-execution-evm/docker/jwttoken/jwt.hex
 
 ```bash
 cd build
-./evm-single init --rollkit.node.aggregator=true --rollkit.signer.passphrase secret
+./evm-single init --evolve.node.aggregator=true --evolve.signer.passphrase secret
 ```
 
 ### 2. Start the Sequencer
@@ -82,9 +82,9 @@ cd build
 ./evm-single start \
   --evm.jwt-secret $(cat /path/to/go-execution-evm/docker/jwttoken/jwt.hex) \
   --evm.genesis-hash 0x0a962a0d163416829894c89cb604ae422323bcdf02d7ea08b94d68d3e026a380 \
-  --rollkit.node.block_time 1s \
-  --rollkit.node.aggregator=true \
-  --rollkit.signer.passphrase secret
+  --evolve.node.block_time 1s \
+  --evolve.node.aggregator=true \
+  --evolve.signer.passphrase secret
 ```
 
 Replace `/path/to/` with the actual path to your go-execution-evm repository.
@@ -96,7 +96,7 @@ To run a full node alongside your sequencer, follow these steps:
 ### 1. Initialize a New Node Directory
 
 ```bash
-./evm-single init --home ~/.rollkit/evm-single-fullnode
+./evm-single init --home ~/.evolve/evm-single-fullnode
 ```
 
 ### 2. Copy the Genesis File
@@ -104,7 +104,7 @@ To run a full node alongside your sequencer, follow these steps:
 Copy the genesis file from the sequencer node to the full node:
 
 ```bash
-cp ~/.rollkit/evm-single/config/genesis.json ~/.rollkit/evm-single-fullnode/config/
+cp ~/.evolve/evm-single/config/genesis.json ~/.evolve/evm-single-fullnode/config/
 ```
 
 ### 3. Get the Sequencer's P2P Address
@@ -119,12 +119,12 @@ INF listening on address=/ip4/127.0.0.1/tcp/26659/p2p/12D3KooWXXXXXXXXXXXXXXXXXX
 
 ```bash
 ./evm-single start \
-  --home ~/.rollkit/evm-single-fullnode \
+  --home ~/.evolve/evm-single-fullnode \
   --evm.jwt-secret $(cat /path/to/go-execution-evm/docker/jwttoken/jwt.hex) \
   --evm.genesis-hash 0x0a962a0d163416829894c89cb604ae422323bcdf02d7ea08b94d68d3e026a380 \
-  --rollkit.node.block_time 1s \
-  --rollkit.node.aggregator=false \
-  --rollkit.p2p.peers <SEQUENCER_P2P_ID>@127.0.0.1:26659
+  --evolve.node.block_time 1s \
+  --evolve.node.aggregator=false \
+  --evolve.p2p.peers <SEQUENCER_P2P_ID>@127.0.0.1:26659
 ```
 
 Replace `<SEQUENCER_P2P_ID>` with the actual P2P ID from your sequencer's logs.
@@ -143,9 +143,9 @@ INF block marked as DA included blockHash=XXXX blockHeight=XX module=BlockManage
 
 | Flag | Description |
 |------|-------------|
-| `--rollkit.node.aggregator` | Set to true for sequencer mode, false for full node |
-| `--rollkit.signer.passphrase` | Passphrase for the signer |
-| `--rollkit.node.block_time` | Block time for the Rollkit node |
+| `--evolve.node.aggregator` | Set to true for sequencer mode, false for full node |
+| `--evolve.signer.passphrase` | Passphrase for the signer |
+| `--evolve.node.block_time` | Block time for the Evolve node |
 
 ### EVM Flags
 
@@ -159,4 +159,4 @@ INF block marked as DA included blockHash=XXXX blockHeight=XX module=BlockManage
 
 ## Conclusion
 
-You've now set up and configured the Single Sequencer implementation of Rollkit EVM chains. This implementation provides a centralized approach to transaction sequencing while using EVM as the execution layer.
+You've now set up and configured the Single Sequencer implementation of Evolve EVM chains. This implementation provides a centralized approach to transaction sequencing while using EVM as the execution layer.

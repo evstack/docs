@@ -7,7 +7,7 @@ import constants from '../../.vitepress/constants/constants.js'
 
 ## 🌞 Introduction {#introduction}
 
-This tutorial serves as a comprehensive guide for deploying your chain on Celestia's data availability (DA) network. From the Rollkit perspective, there's no difference in posting blocks to Celestia's testnets or Mainnet Beta.
+This tutorial serves as a comprehensive guide for deploying your chain on Celestia's data availability (DA) network. From the Evolve perspective, there's no difference in posting blocks to Celestia's testnets or Mainnet Beta.
 
 Before proceeding, ensure that you have completed the [gm-world](/guides/gm-world.md) tutorial, which covers installing the Testapp CLI and running a chain against a local DA network.
 
@@ -20,17 +20,17 @@ Find more information on how to run a light node in the [Celestia documentation]
 ::: code-group
 
 ```sh-vue [Arabica]
-Rollkit Version: {{constants.celestiaNodeArabicaRollkitTag}}
+Evolve Version: {{constants.celestiaNodeArabicaEvolveTag}}
 Celestia Node Version: {{constants.celestiaNodeArabicaTag}}
 ```
 
 ```sh-vue [Mocha]
-Rollkit Version: {{constants.celestiaNodeMochaRollkitTag}}
+Evolve Version: {{constants.celestiaNodeMochaEvolveTag}}
 Celestia Node Version: {{constants.celestiaNodeMochaTag}}
 ```
 
 ```sh-vue [Mainnet]
-Rollkit Version: {{constants.celestiaNodeMainnetRollkitTag}}
+Evolve Version: {{constants.celestiaNodeMainnetEvolveTag}}
 Celestia Node Version: {{constants.celestiaNodeMainnetTag}}
 ```
 
@@ -50,14 +50,14 @@ After successfully starting a light node, it's time to start posting the batches
 
 ## 🛠️ Configuring flags for DA
 
-Now that we are posting to the Celestia DA instead of the local DA, the `rollkit start` command requires three DA configuration flags:
+Now that we are posting to the Celestia DA instead of the local DA, the `evolve start` command requires three DA configuration flags:
 
-- `--rollkit.da.start_height`
-- `--rollkit.da.auth_token`
-- `--rollkit.da.namespace`
+- `--evolve.da.start_height`
+- `--evolve.da.auth_token`
+- `--evolve.da.namespace`
 
 :::tip
-Optionally, you could also set the `--rollkit.da.block_time` flag. This should be set to the finality time of the DA layer, not its actual block time, as Rollkit does not handle reorganization logic. The default value is 15 seconds.
+Optionally, you could also set the `--evolve.da.block_time` flag. This should be set to the finality time of the DA layer, not its actual block time, as Evolve does not handle reorganization logic. The default value is 15 seconds.
 :::
 
 Let's determine which values to provide for each of them.
@@ -133,11 +133,11 @@ Finally, let's initiate the chain node with all the flags:
 
 ```bash
 gmd start \
-    --rollkit.node.aggregator \
-    --rollkit.da.auth_token $AUTH_TOKEN \
-    --rollkit.da.namespace $DA_NAMESPACE \
-    --rollkit.da.start_height $DA_BLOCK_HEIGHT \
-    --rollkit.da.address $DA_ADDRESS
+    --evolve.node.aggregator \
+    --evolve.da.auth_token $AUTH_TOKEN \
+    --evolve.da.namespace $DA_NAMESPACE \
+    --evolve.da.start_height $DA_BLOCK_HEIGHT \
+    --evolve.da.address $DA_ADDRESS
 ```
 
 Now, the chain is running and posting blocks (aggregated in batches) to Celestia. You can view your chain by using your namespace or account on one of Celestia's block explorers.

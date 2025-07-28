@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This guide covers how to set up a full node to run alongside a sequencer node in a Rollkit-based blockchain network. A full node maintains a complete copy of the blockchain and helps validate transactions, improving the network's decentralization and security.
+This guide covers how to set up a full node to run alongside a sequencer node in a Evolve-based blockchain network. A full node maintains a complete copy of the blockchain and helps validate transactions, improving the network's decentralization and security.
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@ Before proceeding, ensure that you have completed the [build a chain](/guides/gm
 Ensure that you have:
 
 - A local Data Availability (DA) network node running on port `7980`.
-- A Rollkit sequencer node running and posting blocks to the DA network.
+- A Evolve sequencer node running and posting blocks to the DA network.
 
 ## Setting Up Your Full Node
 
@@ -66,7 +66,7 @@ Run your full node with the following command:
 
 ```bash
 gmd start \
-  --rollkit.da.address http://127.0.0.1:7980 \
+  --evolve.da.address http://127.0.0.1:7980 \
   --p2p.seeds $P2P_ID@127.0.0.1:7676 \
   --minimum-gas-prices 0stake \
   --rpc.laddr tcp://127.0.0.1:46657 \
@@ -100,4 +100,4 @@ If your chain uses EVM as an execution layer and you see an error like `datadir 
 
 ## Conclusion
 
-You've now set up a full node running alongside your Rollkit sequencer.
+You've now set up a full node running alongside your Evolve sequencer.

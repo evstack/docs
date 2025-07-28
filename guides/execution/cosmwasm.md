@@ -18,7 +18,7 @@ import constants from '../../.vitepress/constants/constants.js'
 CosmWasm is a smart contracting platform built for the Cosmos
 ecosystem by making use of [WebAssembly](https://webassembly.org) (Wasm)
 to build smart contracts for Cosmos-SDK. In this tutorial, we will be
-exploring how to integrate CosmWasm with local DA layer using Rollkit.
+exploring how to integrate CosmWasm with local DA layer using Evolve.
 
 The smart contract we will use for this tutorial is one provided by
 the CosmWasm team for Nameservice purchasing.
@@ -47,7 +47,7 @@ To see the engine version (provided it is running): kurtosis engine status
 Now that we have kurtosis installed, we can launch our CosmWasm chain along with the local DA by running the following command:
 
 ```bash
-kurtosis run github.com/rollkit/cosmwasm@v0.2.0
+kurtosis run github.com/evolve/cosmwasm@v0.2.0
 ```
 
 You should see an output like this:
@@ -57,10 +57,10 @@ INFO[2024-07-02T11:15:43-04:00] Creating a new enclave for Starlark to run insid
 INFO[2024-07-11T11:53:13-04:00] Enclave 'forgotten-fen' created successfully 
 
 Container images used in this run:
-> ghcr.io/rollkit/local-da:v0.2.1 - remotely downloaded
-> ghcr.io/rollkit/cosmwasm:v0.1.0 - remotely downloaded
+> ghcr.io/evolve/local-da:v0.2.1 - remotely downloaded
+> ghcr.io/evolve/cosmwasm:v0.1.0 - remotely downloaded
 
-Adding service with name 'local-da' and image 'ghcr.io/rollkit/local-da:v0.2.1'
+Adding service with name 'local-da' and image 'ghcr.io/evolve/local-da:v0.2.1'
 Service 'local-da' added with service UUID '96d04bc472c9455d88d046128fbdefa6'
 
 Printing a message
@@ -69,7 +69,7 @@ connecting to da layer via http://172.16.0.5:7980
 Printing a message
 Adding CosmWasm service
 
-Adding service with name 'wasm' and image 'ghcr.io/rollkit/cosmwasm:3b5a25b'
+Adding service with name 'wasm' and image 'ghcr.io/evolve/cosmwasm:3b5a25b'
 Service 'wasm' added with service UUID 'c71b0308616d40ad919ad24c3d14f35b'
 
 Printing a message
@@ -106,8 +106,8 @@ docker ps
 
 ```bash
 CONTAINER ID   IMAGE                              COMMAND                  CREATED              STATUS              PORTS                                                                              NAMES
-5bfeda0a871f   ghcr.io/rollkit/cosmwasm:v0.1.0    "/bin/sh -c 'wasmd s…"   About a minute ago   Up About a minute   0.0.0.0:9290->9290/tcp, 0.0.0.0:36656-36657->36656-36657/tcp                       wasm--c71b0308616d40ad919ad24c3d14f35b
-782dec73fcf8   ghcr.io/rollkit/local-da:v0.2.1    "local-da -listen-all"   About a minute ago   Up About a minute   0.0.0.0:7980->7980/tcp                                                             local-da--96d04bc472c9455d88d046128fbdefa6
+5bfeda0a871f   ghcr.io/evolve/cosmwasm:v0.1.0    "/bin/sh -c 'wasmd s…"   About a minute ago   Up About a minute   0.0.0.0:9290->9290/tcp, 0.0.0.0:36656-36657->36656-36657/tcp                       wasm--c71b0308616d40ad919ad24c3d14f35b
+782dec73fcf8   ghcr.io/evolve/local-da:v0.2.1    "local-da -listen-all"   About a minute ago   Up About a minute   0.0.0.0:7980->7980/tcp                                                             local-da--96d04bc472c9455d88d046128fbdefa6
 62da89015918   kurtosistech/core:0.90.1           "/bin/sh -c ./api-co…"   About a minute ago   Up About a minute   0.0.0.0:55500->7443/tcp                                                            kurtosis-api--8cd936e91ada45beab50f0d19be8c57f
 1eb6366a5e16   fluent/fluent-bit:1.9.7            "/fluent-bit/bin/flu…"   About a minute ago   Up About a minute   2020/tcp                                                                           kurtosis-logs-collector--8cd936e91ada45beab50f0d19be8c57f
 8bfee95b49ee   kurtosistech/engine:0.90.1         "/bin/sh -c ./kurtos…"   39 minutes ago       Up 39 minutes       0.0.0.0:8081->8081/tcp, 0.0.0.0:9710-9711->9710-9711/tcp, 0.0.0.0:9779->9779/tcp   kurtosis-engine--cee974a1c2b141478c9eb2a9b1e4f87f
@@ -144,7 +144,7 @@ docker logs $CW
 
 Good work so far, we have a Chain node, DA network node, now we can move onto the contract deployment.
 
-## 📒 Contract deployment on CosmWasm with Rollkit {#contract-deployment-on-cosmwasm}
+## 📒 Contract deployment on CosmWasm with Evolve {#contract-deployment-on-cosmwasm}
 
 ### 🤖 Compile the smart contract {#compile-smart-contract}
 
@@ -153,13 +153,13 @@ To compile the smart contract, you can use our docker image.
 First download the image:
 
 ```bash
-docker pull ghcr.io/rollkit/contract:v0.2.0
+docker pull ghcr.io/evolve/contract:v0.2.0
 ```
 
 Then run the container:
 
 ```bash
-docker run --rm -d --name cw ghcr.io/rollkit/contract:v0.2.0
+docker run --rm -d --name cw ghcr.io/evolve/contract:v0.2.0
 ```
 
 The container is now running and has the pre-built nameservice contract for us. Let's copy it out of the container.
@@ -353,4 +353,4 @@ You'll see the owner's address in a JSON response:
 ```
 
 With that, we have instantiated and interacted with the CosmWasm nameservice
-smart contract on our local DA network using Rollkit!
+smart contract on our local DA network using Evolve!

@@ -9,14 +9,15 @@ const { BASE: base = "/" } = process.env;
 // https://vitepress.dev/reference/site-config
 export default withMermaid({
   lang: "en-US",
-  title: "Rollkit",
-  description: "The unstoppable stack",
+  title: " ",
+  titleTemplate: false,
+  description: "Launch Fast. Build Your Own Network.",
   lastUpdated: true,
   cleanUrls: true,
   ignoreDeadLinks: true,
   base: base,
   sitemap: {
-    hostname: "https://rollkit.dev",
+    hostname: "https://evolve.dev",
   },
 
   head: [
@@ -67,16 +68,16 @@ export default withMermaid({
       "meta",
       {
         property: "description",
-        content: "The unstoppable stack.",
+        content: "Launch Fast. Build Your Own Network. Modular. Production-ready. Yours.",
       },
     ],
     ["meta", { httpEquiv: "Content-Language", content: "en" }],
     ["meta", { name: "twitter:card", content: "summary_large_image" }],
-    ["meta", { name: "twitter:image", content: "/img/Rollkit-cover.jpg" }],
-    ["meta", { name: "twitter:site:domain", content: "rollkit.dev" }],
-    ["meta", { name: "twitter:url", content: "https://rollkit.dev" }],
-    ["meta", { name: "og:image", content: "/img/Rollkit-cover.jpg" }],
-    ["meta", { name: "apple-mobile-web-app-title", content: "Rollkit" }],
+    ["meta", { name: "twitter:image", content: "/img/Evolve-cover.jpg" }],
+    ["meta", { name: "twitter:site:domain", content: "evolve.dev" }],
+    ["meta", { name: "twitter:url", content: "https://evolve.dev" }],
+    ["meta", { name: "og:image", content: "/img/Evolve-cover.jpg" }],
+    ["meta", { name: "apple-mobile-web-app-title", content: "Evolve" }],
     [
       "script",
       {},
@@ -119,7 +120,7 @@ export default withMermaid({
 
     footer: {
       message: "Released under the APACHE-2.0 License",
-      copyright: "Copyright © 2023 Rollkit",
+      copyright: "Copyright © 2024 Evolve",
     },
 
     search: {
@@ -134,20 +135,20 @@ export default withMermaid({
     },
 
     editLink: {
-      pattern: "https://github.com/rollkit/docs/edit/main/:path",
+      pattern: "https://github.com/evolve/docs/edit/main/:path",
       text: "Edit this page on GitHub",
     },
 
     logo: {
-      alt: "Rollkit Logo",
-      light: "/img/logo.svg",
-      dark: "/img/logo-dark.svg",
+      alt: "Evolve Logo",
+      light: "/img/logo.png",
+      dark: "/img/logo.png",
     },
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/rollkit/rollkit" },
-      { icon: "twitter", link: "https://twitter.com/RollkitDev" },
-      { icon: { svg: telegramSVG }, link: "https://t.me/rollkit" },
+      { icon: "github", link: "https://github.com/evolve/evolve" },
+      { icon: "twitter", link: "https://twitter.com/EvolveDev" },
+      { icon: { svg: telegramSVG }, link: "https://t.me/evolve" },
     ],
   },
   transformPageData(pageData) {
@@ -158,8 +159,8 @@ export default withMermaid({
         name: "og:title",
         content:
           pageData.frontmatter.layout === "home"
-            ? `Rollkit`
-            : `${pageData.title} | Rollkit`,
+            ? `Evolve`
+            : `${pageData.title} | Evolve`,
       },
       {
         name: "og:description",
@@ -184,7 +185,7 @@ function sidebarHome() {
       collapsed: true,
       items: [
         {
-          text: "About Rollkit",
+          text: "About Evolve",
           link: "/learn/about",
         },
         {
@@ -296,8 +297,8 @@ function sidebarHome() {
           link: "/guides/reset-state",
         },
         {
-          text: "CometBFT into a Rollkit app",
-          link: "/guides/cometbft-to-rollkit",
+          text: "CometBFT into a Evolve app",
+          link: "/guides/cometbft-to-evolve",
         },
         {
           text: "Create genesis for your chain",

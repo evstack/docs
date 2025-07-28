@@ -1,14 +1,14 @@
 # DA
 
-Rollkit provides a generic [data availability interface][da-interface] for modular blockchains. Any DA that implements this interface can be used with Rollkit.
+Evolve provides a generic [data availability interface][da-interface] for modular blockchains. Any DA that implements this interface can be used with Evolve.
 
 ## Details
 
-`Client` can connect via JSON-RPC transports using Rollkit's [jsonrpc][jsonrpc] implementations. The connection can be configured using the following cli flags:
+`Client` can connect via JSON-RPC transports using Evolve's [jsonrpc][jsonrpc] implementations. The connection can be configured using the following cli flags:
 
-* `--rollkit.da.address`: url address of the DA service (default: "grpc://localhost:26650")
-* `--rollkit.da.auth_token`: authentication token of the DA service
-* `--rollkit.da.namespace`: namespace to use when submitting blobs to the DA service
+* `--evolve.da.address`: url address of the DA service (default: "grpc://localhost:26650")
+* `--evolve.da.auth_token`: authentication token of the DA service
+* `--evolve.da.namespace`: namespace to use when submitting blobs to the DA service
 
 Given a set of blocks to be submitted to DA by the block manager, the `SubmitBlocks` first encodes the blocks using protobuf (the encoded data are called blobs) and invokes the `Submit` method on the underlying DA implementation. On successful submission (`StatusSuccess`), the DA block height which included in the blocks is returned.
 
@@ -29,5 +29,5 @@ Both `SubmitBlocks` and `RetrieveBlocks` may be unsuccessful if the DA node and 
 
 [2] [jsonrpc][jsonrpc]
 
-[da-interface]: https://github.com/rollkit/rollkit/blob/main/core/da/da.go#L11
-[jsonrpc]: https://github.com/rollkit/rollkit/tree/main/da/jsonrpc
+[da-interface]: https://github.com/evolve/evolve/blob/main/core/da/da.go#L11
+[jsonrpc]: https://github.com/evolve/evolve/tree/main/da/jsonrpc
