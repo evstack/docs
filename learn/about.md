@@ -20,7 +20,7 @@ Some still call them rollups. You'll just call it your network.
 
 Evolve reframes the conversation: these aren't second-class layers. These are networks — with full execution freedom, developer control, and modular power.
 
-Evolve is an [open-source framework](https://github.com/evolve/evolve). It features ev-node, a modular node that can run networks and exposes an [ABCI-compatible client interface](https://github.com/cometbft/cometbft/tree/main/abci), which can be used as a substitute for CometBFT in any ABCI-compatible blockchain application.
+Evolve is an [open-source framework](https://github.com/evstack/ev-node). It features ev-node, a modular node that can run networks and exposes an [ABCI-compatible client interface](https://github.com/cometbft/cometbft/tree/main/abci), which can be used as a substitute for CometBFT in any ABCI-compatible blockchain application.
 
 With Evolve, you get:
 

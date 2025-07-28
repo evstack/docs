@@ -135,7 +135,7 @@ export default withMermaid({
     },
 
     editLink: {
-      pattern: "https://github.com/evolve/docs/edit/main/:path",
+      pattern: "https://github.com/evstack/docs/edit/main/:path",
       text: "Edit this page on GitHub",
     },
 
@@ -147,8 +147,8 @@ export default withMermaid({
 
     socialLinks: [
       { icon: "github", link: "https://github.com/evstack" },
-      { icon: "twitter", link: "https://twitter.com/EvolveDev" },
-      { icon: { svg: telegramSVG }, link: "https://t.me/evolve" },
+      { icon: "twitter", link: "https://twitter.com/ev_stack" },
+      { icon: { svg: telegramSVG }, link: "https://t.me/+2p8-IYf6sQ0zNmEx" },
     ],
   },
   transformPageData(pageData) {
