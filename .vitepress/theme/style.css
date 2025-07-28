@@ -172,9 +172,17 @@ body {
     linear-gradient(90deg, rgba(255, 0, 51, 0.15) 3px, transparent 3px);
 }
 
-/* Remove the hero image if logo is text-based */
+/* Style the hero image (logo) */
 .VPHero .VPImage {
-  display: none;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Make the hero logo bigger */
+.VPHero .VPImage img {
+  height: 120px !important;
+  width: auto !important;
+  max-width: none !important;
 }
 
 /* Make all layout components transparent to show body background */

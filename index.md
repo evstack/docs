@@ -4,8 +4,10 @@ layout: home
 titleTemplate: ':title'
 
 hero:
-  name: "Evolve"
-  text: "Launch Fast. Build Your Own Network."
+  image: 
+    src: /img/logo.png
+    alt: Evolve Logo
+  text: "Own It. Shape It. Launch It"
   tagline: Modular. Production-ready. Yours. Built on Celestia, Evolve enables developers a direct path to shipping custom networks.
   actions:
     - theme: brand
