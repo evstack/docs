@@ -3,16 +3,12 @@
 <!-- markdownlint-disable MD033 -->
 <script setup>
 import Callout from '../../.vitepress/components/callout.vue'
-import ExecutionCallout from '../../.vitepress/components/execution_callout.vue'
 import constants from '../../.vitepress/constants/constants.js'
 </script>
 <!-- markdownlint-enable MD033 -->
 
 :::tip
 <Callout />
-:::
-:::warning
-<ExecutionCallout />
 :::
 
 CosmWasm is a smart contracting platform built for the Cosmos

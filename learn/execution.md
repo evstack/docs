@@ -12,7 +12,7 @@ Evolve natively supports Cosmos SDK-based applications as the execution layer fo
 
 - [Cosmos SDK Documentation](https://docs.cosmos.network/)
 - [Cosmos SDK ABCI Documentation](https://docs.cosmos.network/main/build/abci/introduction)
-- [Evolve ABCI Adapter](https://github.com/evolve/go-execution-abci)
+- [Evolve ABCI Adapter](https://github.com/evstack/ev-abci)
 
 ### Reth
 
@@ -21,7 +21,7 @@ Reth is a high-performance Ethereum execution client written in Rust. Evolve can
 For more information about Reth, see the official documentation:
 
 - [Reth GitHub Repository](https://github.com/paradigmxyz/reth)
-- [Evolve Reth Integration](https://github.com/evolve/lumen)
+- [Evolve Reth Integration](https://github.com/evstack/ev-reth)
 
 ## How It Works
 

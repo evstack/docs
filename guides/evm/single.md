@@ -10,7 +10,7 @@ Before starting, ensure you have:
 
 - Go 1.20 or later
 - Docker and Docker Compose
-- Access to the go-execution-evm repository (op-geth branch)
+- Access to the ev-node and ev-reth repositories
 - Git
 
 ## Setting Up the Environment
@@ -47,12 +47,11 @@ This will start a local DA node on the default port (26658).
 
 ## Setting Up the EVM Layer
 
-### 1. Clone the go-execution-evm Repository
+### 1. Clone the ev-node Repository
 
 ```bash
-git clone https://github.com/evolve/go-execution-evm.git
-cd go-execution-evm
-git checkout op-geth
+git clone https://github.com/evstack/ev-node.git
+cd ev-node
 ```
 
 ### 2. Start the EVM Layer Using Docker Compose
@@ -65,7 +64,7 @@ This will start Reth (Rust Ethereum client) with the appropriate configuration f
 
 ### 3. Note the JWT Secret Path
 
-The JWT secret is typically located at `go-execution-evm/docker/jwttoken/jwt.hex`. You'll need this path for the sequencer configuration.
+The JWT secret is typically located at `ev-node/execution/evm/docker/jwttoken/jwt.hex`. You'll need this path for the sequencer configuration.
 
 ## Running the Single Sequencer Implementation
 
@@ -80,14 +79,14 @@ cd build
 
 ```bash
 ./evm-single start \
-  --evm.jwt-secret $(cat /path/to/go-execution-evm/docker/jwttoken/jwt.hex) \
+  --evm.jwt-secret $(cat /path/to/ev-node/execution/evm/docker/jwttoken/jwt.hex) \
   --evm.genesis-hash 0x0a962a0d163416829894c89cb604ae422323bcdf02d7ea08b94d68d3e026a380 \
   --evolve.node.block_time 1s \
   --evolve.node.aggregator=true \
   --evolve.signer.passphrase secret
 ```
 
-Replace `/path/to/` with the actual path to your go-execution-evm repository.
+Replace `/path/to/` with the actual path to your ev-node repository.
 
 ## Setting Up a Full Node
 
@@ -120,7 +119,7 @@ INF listening on address=/ip4/127.0.0.1/tcp/26659/p2p/12D3KooWXXXXXXXXXXXXXXXXXX
 ```bash
 ./evm-single start \
   --home ~/.evolve/evm-single-fullnode \
-  --evm.jwt-secret $(cat /path/to/go-execution-evm/docker/jwttoken/jwt.hex) \
+  --evm.jwt-secret $(cat /path/to/ev-node/execution/evm/docker/jwttoken/jwt.hex) \
   --evm.genesis-hash 0x0a962a0d163416829894c89cb604ae422323bcdf02d7ea08b94d68d3e026a380 \
   --evolve.node.block_time 1s \
   --evolve.node.aggregator=false \

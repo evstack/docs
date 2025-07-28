@@ -193,16 +193,52 @@ body {
   background-color: transparent !important;
 }
 
-/* Make all content areas transparent to show body grid background */
+/* Make content areas transparent by default to show body grid background */
 .VPContent,
-.VPDoc,
-.VPDocContent,
-.VPDoc .container,
-.content,
-main,
+.VPHome,
 .Layout > * {
   background-color: transparent !important;
   background: transparent !important;
+}
+
+/* Documentation pages - solid background for readability */
+.VPDoc {
+  background-color: #FFFFFF !important;
+  min-height: 100vh;
+}
+
+.dark .VPDoc {
+  background-color: #0A0A0A !important;
+}
+
+/* Documentation content area */
+.VPDoc .container,
+.VPDoc .content,
+.VPDocContent {
+  background-color: #FFFFFF !important;
+}
+
+.dark .VPDoc .container,
+.dark .VPDoc .content,
+.dark .VPDocContent {
+  background-color: #0A0A0A !important;
+}
+
+/* Add padding to doc content for better readability */
+.VPDoc .VPDocOutlineDropdown,
+.VPDoc .content-container {
+  padding: 1rem;
+}
+
+/* Sidebar background for documentation pages */
+.VPSidebar {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(8px);
+}
+
+.dark .VPSidebar {
+  background-color: rgba(10, 10, 10, 0.95) !important;
+  backdrop-filter: blur(8px);
 }
 
 /* Feature boxes - ensure proper backgrounds in light/dark modes */

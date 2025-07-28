@@ -245,13 +245,13 @@ function sidebarHome() {
             },
           ],
         },
-        {
-          text: "Execution",
-          collapsed: true,
-          items: [
-            { text: "CosmWasm", link: "/guides/execution/cosmwasm" },
-          ],
-        },
+        // {
+        //   text: "Execution",
+        //   collapsed: true,
+        //   items: [
+        //     { text: "CosmWasm", link: "/guides/execution/cosmwasm" },
+        //   ],
+        // },
         {
           text: "Deploy your chain",
           collapsed: true,
