@@ -78,23 +78,23 @@ export default withMermaid({
     ["meta", { name: "twitter:url", content: "https://evolve.dev" }],
     ["meta", { name: "og:image", content: "/img/Evolve-cover.jpg" }],
     ["meta", { name: "apple-mobile-web-app-title", content: "Evolve" }],
-    [
-      "script",
-      {},
-      `
-      window.chatbaseConfig = {
-        chatbotId: "sw0sRxREFEQLTdqwC_Fbe",
-      }
-      `,
-    ],
-    [
-      "script",
-      {
-        src: "https://www.chatbase.co/embed.min.js",
-        id: "sw0sRxREFEQLTdqwC_Fbe",
-        defer: true,
-      },
-    ],
+    // [
+    //   "script",
+    //   {},
+    //   `
+    //   window.chatbaseConfig = {
+    //     chatbotId: "sw0sRxREFEQLTdqwC_Fbe",
+    //   }
+    //   `,
+    // ],
+    // [
+    //   "script",
+    //   {
+    //     src: "https://www.chatbase.co/embed.min.js",
+    //     id: "sw0sRxREFEQLTdqwC_Fbe",
+    //     defer: true,
+    //   },
+    // ],
     [
       "script",
       {
