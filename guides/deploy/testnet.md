@@ -263,7 +263,7 @@ The deployment of sequencer and full nodes requires running multiple processes a
 
 To save time, we can use ready-to-use Docker Compose stacks that can be customized based on specific needs. These pre-configured stacks handle the complexity of service orchestration, environment variable management, and inter-service communication automatically.
 
-To make this deployment process easy and painless for node operators, you can use the example implementation available at: [https://github.com/evolve/ops-toolbox/tree/main/ev-stacks](https://github.com/evolve/ops-toolbox/tree/main/ev-stacks/)
+To make this deployment process easy and painless for node operators, you can use the example implementation available at: [https://github.com/evstack/ev-toolbox/tree/main/ev-stacks](https://github.com/evstack/ev-toolbox/tree/main/ev-stacks/)
 
 This solution provides:
 - Pre-configured Docker Compose files for sequencer and full node deployments

@@ -39,7 +39,7 @@ Docker Compose version v2.23.0-desktop.1
 
 In addition to our chain, we need to run a DA.
 
-We will use the [local-da](https://github.com/evolve/local-da) for this tutorial and run it with our chain.
+We will use the [local-da](https://github.com/evstack/ev-node/tree/main/da/cmd/local-daa) for this tutorial and run it with our chain.
 
 To save time, we can use the local-da Dockerfile:
 
