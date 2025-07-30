@@ -41,7 +41,8 @@ export default withMermaid({
       "meta",
       {
         property: "description",
-        content: "Launch Fast. Build Your Own Network. Modular. Production-ready. Yours.",
+        content:
+          "Launch Fast. Build Your Own Network. Modular. Production-ready. Yours.",
       },
     ],
     ["meta", { httpEquiv: "Content-Language", content: "en" }],
@@ -60,7 +61,7 @@ export default withMermaid({
       },
     ],
   ],
-  
+
   // // Build optimizations
   // vite: {
   //   build: {
@@ -97,7 +98,7 @@ export default withMermaid({
   //     exclude: ['vitepress'],
   //   },
   // },
-  
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: nav(),
@@ -189,7 +190,7 @@ function sidebarHome() {
         },
         {
           text: "Execution",
-          link: "/learn/execution"
+          link: "/learn/execution",
         },
         {
           text: "Technical Specifications",
@@ -269,7 +270,7 @@ function sidebarHome() {
               text: "Reth State Backup",
               link: "/guides/evm/reth-backup",
             },
-          ]
+          ],
         },
         {
           text: "Run a Full Node",
@@ -304,13 +305,7 @@ function sidebarHome() {
     {
       text: "Blog",
       collapsed: true,
-      items: [
-        { text: "Overview", link: "/blog/overview" },
-        {
-          text: "Rollkit: The First Sovereign Rollup Framework",
-          link: "/blog/rollkit-the-first-sovereign-rollup-framework",
-        },
-      ],
+      items: [{ text: "Overview", link: "/blog/overview" }],
     },
   ];
 }

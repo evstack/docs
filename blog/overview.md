@@ -8,6 +8,4 @@ Welcome to our blog! Here, you'll find a variety of articles on a range of topic
 
 ## Table of contents
 
-- [Rollkit: The First Sovereign Rollup Framework](/blog/rollkit-the-first-sovereign-rollup-framework.md)
-
 Stay tuned for more exciting content!
