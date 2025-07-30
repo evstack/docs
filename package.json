@@ -1,4 +1,7 @@
 {
+  "name": "evolve-docs",
+  "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
