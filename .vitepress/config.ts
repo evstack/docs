@@ -41,8 +41,7 @@ export default withMermaid({
       "meta",
       {
         property: "description",
-        content:
-          "Launch Fast. Build Your Own Network. Modular. Production-ready. Yours.",
+        content: "Own It. Shape It. Launch It. Evolve your app",
       },
     ],
     ["meta", { httpEquiv: "Content-Language", content: "en" }],
