@@ -4,14 +4,14 @@ layout: home
 titleTemplate: ':title'
 
 hero:
-  image: 
+  image:
     src: /img/logo.png
     alt: Evolve Logo
   text: "Own It. Shape It. Launch It"
   tagline: Modular. Production-ready. Yours. Built on Celestia, Evolve enables developers a direct path to shipping custom networks.
   actions:
     - theme: brand
-      text: Quick start 
+      text: Quick start
       link: /guides/quick-start
     - theme: alt
       text: Introduction
@@ -23,8 +23,8 @@ features:
     link: /learn/about#why-evolve
     icon: 🚀
   - title: Speed to Traction
-    details: Launch faster than standing up a full L1, and more flexible than constrained rollup frameworks. Get to market quickly with production-ready infrastructure.
-    link: /learn/stack
+    details: Get to market fast with infrastructure that adapts to your app—not the other way around. Skip the complexity and start building what matters, your product.
+    link: /learn/execution
     icon: ⚡
   - title: No Validator Overhead
     details: Skip the complexity of running validators. Focus on building your application while Celestia handles consensus and data availability.
