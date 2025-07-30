@@ -55,7 +55,7 @@ flowchart TB
         SYNC[Sync Loop]
         DAI[DA Includer]
     end
-    
+
     subgraph External Components
         EX[Executor]
         SEQ[Sequencer]
@@ -64,25 +64,25 @@ flowchart TB
         DS[Data Store/P2P]
         ST[Local Store]
     end
-    
+
     REP -->|GetTxs| EX
     REP -->|SubmitBatch| SEQ
     REP -->|Notify| AGG
-    
+
     AGG -->|CreateBlock| BM
     BM -->|ApplyBlock| EX
     BM -->|Save| ST
-    
+
     BM -->|Headers| SUB
     BM -->|Data| SUB
     SUB -->|Submit| DA
-    
+
     RET -->|Retrieve| DA
     RET -->|Headers/Data| SYNC
-    
+
     HS -->|Headers| SYNC
     DS -->|Data| SYNC
-    
+
     SYNC -->|Complete Blocks| BM
     SYNC -->|DA Included| DAI
     DAI -->|SetFinal| EX
@@ -135,14 +135,14 @@ flowchart LR
         E -->|Txs Available| R
         R -->|Submit to Sequencer| S[Sequencer]
         R -->|NotifyNewTransactions| N[txNotifyCh]
-        
+
         N --> A{Aggregation Logic}
         BT[blockTimer] --> A
         LT[lazyTimer] --> A
-        
+
         A -->|Txs Available| P1[Produce Block with Txs]
         A -->|No Txs & LazyTimer| P2[Produce Empty Block]
-        
+
         P1 --> B[Block Creation]
         P2 --> B
     end
@@ -205,7 +205,7 @@ flowchart LR
         H4 -->|Success| H5[Remove from Queue]
         H4 -->|Failure| H6[Keep in Queue & Retry]
     end
-    
+
     subgraph Data Submission
         D1[pendingData Queue] --> D2[Data Submission Loop]
         D2 --> D3[Marshal to Protobuf]
@@ -213,7 +213,7 @@ flowchart LR
         D4 -->|Success| D5[Remove from Queue]
         D4 -->|Failure| D6[Keep in Queue & Retry]
     end
-    
+
     H2 -.->|DABlockTime| H2
     D2 -.->|DABlockTime| D2
 ```
@@ -263,13 +263,13 @@ flowchart TD
     E -->|Success| F[Validate Signatures]
     E -->|NotFound| G[Increment Height]
     E -->|Error| H[Retry Logic]
-    
+
     F --> I[Check Sequencer Info]
     I --> J[Mark DA Included]
     J --> K[Send to Sync]
     K --> L[Increment Height]
     L --> M[Immediate Next Retrieval]
-    
+
     G --> C
     H --> N{Retries < 10?}
     N -->|Yes| O[Wait 100ms]
@@ -398,11 +398,11 @@ Once both conditions are met, the block is marked as DA-included.
 
 #### About Soft Confirmations and DA Inclusions
 
-The block manager retrieves blocks from both the P2P network and the underlying DA network because the blocks are available in the P2P network faster and DA retrieval is slower (e.g., 1 second vs 6 seconds).  
-The blocks retrieved from the P2P network are only marked as soft confirmed until the DA retrieval succeeds on those blocks and they are marked DA-included.  
+The block manager retrieves blocks from both the P2P network and the underlying DA network because the blocks are available in the P2P network faster and DA retrieval is slower (e.g., 1 second vs 6 seconds).
+The blocks retrieved from the P2P network are only marked as soft confirmed until the DA retrieval succeeds on those blocks and they are marked DA-included.
 DA-included blocks are considered to have a higher level of finality.
 
-**DAIncluderLoop**:  
+**DAIncluderLoop**:
 The `DAIncluderLoop` is responsible for advancing the `DAIncludedHeight` by:
 
 * Checking if blocks after the current height have both header and data marked as DA-included in caches
@@ -423,7 +423,7 @@ flowchart TD
         DA1[DA Header Retrieval] --> H
         DA2[DA Data Retrieval] --> D
     end
-    
+
     subgraph SyncLoop
         H --> S[Sync Goroutine]
         D --> S
@@ -587,13 +587,13 @@ See [tutorial] for running a multi-node network with both sequencer and non-sequ
 
 [9] [Lazy Aggregation with DA Layer Consistency ADR](../../lazy-adr/adr-021-lazy-aggregation.md)
 
-[maxSubmitAttempts]: https://github.com/rollkit/rollkit/blob/main/block/manager.go#L50
-[defaultBlockTime]: https://github.com/rollkit/rollkit/blob/main/block/manager.go#L36
-[defaultDABlockTime]: https://github.com/rollkit/rollkit/blob/main/block/manager.go#L33
-[defaultLazyBlockTime]: https://github.com/rollkit/rollkit/blob/main/block/manager.go#L39
-[initialBackoff]: https://github.com/rollkit/rollkit/blob/main/block/manager.go#L59
+[maxSubmitAttempts]: https://github.com/evstack/ev-node/blob/main/block/manager.go#L50
+[defaultBlockTime]: https://github.com/evstack/ev-node/blob/main/block/manager.go#L36
+[defaultDABlockTime]: https://github.com/evstack/ev-node/blob/main/block/manager.go#L33
+[defaultLazyBlockTime]: https://github.com/evstack/ev-node/blob/main/block/manager.go#L39
+[initialBackoff]: https://github.com/evstack/ev-node/blob/main/block/manager.go#L59
 [go-header]: https://github.com/celestiaorg/go-header
-[block-sync]: https://github.com/rollkit/rollkit/blob/main/pkg/sync/sync_service.go
-[full-node]: https://github.com/rollkit/rollkit/blob/main/node/full.go
-[block-manager]: https://github.com/rollkit/rollkit/blob/main/block/manager.go
+[block-sync]: https://github.com/evstack/ev-node/blob/main/pkg/sync/sync_service.go
+[full-node]: https://github.com/evstack/ev-node/blob/main/node/full.go
+[block-manager]: https://github.com/evstack/ev-node/blob/main/block/manager.go
 [tutorial]: https://rollkit.dev/guides/full-node

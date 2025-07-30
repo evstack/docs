@@ -41,7 +41,7 @@ wasmd genesis collect-gentxs
 # Note: validator and sequencer are used interchangeably here
 ADDRESS=$(jq -r '.address' ~/.wasmd/config/priv_validator_key.json)
 PUB_KEY=$(jq -r '.pub_key' ~/.wasmd/config/priv_validator_key.json)
-jq --argjson pubKey "$PUB_KEY" '.consensus["validators"]=[{"address": "'$ADDRESS'", "pub_key": $pubKey, "power": "1000", "name": "Rollkit Sequencer"}]' ~/.wasmd/config/genesis.json > temp.json && mv temp.json ~/.wasmd/config/genesis.json
+jq --argjson pubKey "$PUB_KEY" '.consensus["validators"]=[{"address": "'$ADDRESS'", "pub_key": $pubKey, "power": "1000", "name": "Evolve Sequencer"}]' ~/.wasmd/config/genesis.json > temp.json && mv temp.json ~/.wasmd/config/genesis.json
 
 echo "wasmd start --rollkit.aggregator --rollkit.da.address http://localhost:7980 --rpc.laddr tcp://127.0.0.1:36657 --grpc.address 127.0.0.1:9290 --p2p.laddr \"0.0.0.0:36656\" --minimum-gas-prices="0.025uwasm"" >> restart-wasmd.sh
 
