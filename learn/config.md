@@ -1,6 +1,6 @@
 # Config
 
-This document provides a comprehensive reference for all configuration options available in Rollkit. Understanding these configurations will help you tailor Rollkit's behavior to your specific needs, whether you're running an aggregator, a full node, or a light client.
+This document provides a comprehensive reference for all configuration options available in Evolve. Understanding these configurations will help you tailor Evolve's behavior to your specific needs, whether you're running an aggregator, a full node, or a light client.
 
 ## Table of Contents
 
@@ -51,36 +51,36 @@ This document provides a comprehensive reference for all configuration options a
 
 ## Configs
 
-Rollkit configurations can be managed through a YAML file (typically `rollkit.yaml` located in `~/.rollkit/config/` or `<your_home_dir>/config/`) and command-line flags. The system prioritizes configurations in the following order (highest priority first):
+Evolve configurations can be managed through a YAML file (typically `evolve.yaml` located in `~/.evolve/config/` or `<your_home_dir>/config/`) and command-line flags. The system prioritizes configurations in the following order (highest priority first):
 
 1. **Command-line flags:** Override all other settings.
 2. **YAML configuration file:** Values specified in the `config.yaml` file.
-3. **Default values:** Predefined defaults within Rollkit.
+3. **Default values:** Predefined defaults within Evolve.
 
 Environment variables can also be used, typically prefixed with your executable's name (e.g., `YOURAPP_CHAIN_ID="my-chain"`).
 
 ## Base Configuration
 
-These are fundamental settings for your Rollkit node.
+These are fundamental settings for your Evolve node.
 
 ### Root Directory
 
 **Description:**
-The root directory where Rollkit stores its data, including the database and configuration files. This is a foundational setting that dictates where all other file paths are resolved from.
+The root directory where Evolve stores its data, including the database and configuration files. This is a foundational setting that dictates where all other file paths are resolved from.
 
 **YAML:**
 This option is not set within the YAML configuration file itself, as it specifies the location *of* the configuration file and other application data.
 
 **Command-line Flag:**
 `--home <path>`
-*Example:* `--home /mnt/data/rollkit_node`
-*Default:* `~/.rollkit` (or a directory derived from the application name if `defaultHome` is customized).
+*Example:* `--home /mnt/data/evolve_node`
+*Default:* `~/.evolve` (or a directory derived from the application name if `defaultHome` is customized).
 *Constant:* `FlagRootDir`
 
 ### Database Path
 
 **Description:**
-The path, relative to the Root Directory, where the Rollkit database will be stored. This database contains blockchain state, blocks, and other critical node data.
+The path, relative to the Root Directory, where the Evolve database will be stored. This database contains blockchain state, blocks, and other critical node data.
 
 **YAML:**
 Set this in your configuration file at the top level:
@@ -90,8 +90,8 @@ db_path: "data"
 ```
 
 **Command-line Flag:**
-`--rollkit.db_path <path>`
-*Example:* `--rollkit.db_path "node_db"`
+`--evolve.db_path <path>`
+*Example:* `--evolve.db_path "node_db"`
 *Default:* `"data"`
 *Constant:* `FlagDBPath`
 
@@ -104,18 +104,18 @@ The unique identifier for your chain. This ID is used to differentiate your netw
 Set this in your configuration file at the top level:
 
 ```yaml
-chain_id: "my-rollkit-chain"
+chain_id: "my-evolve-chain"
 ```
 
 **Command-line Flag:**
 `--chain_id <string>`
 *Example:* `--chain_id "super_rollup_testnet_v1"`
-*Default:* `"rollkit"`
+*Default:* `"evolve"`
 *Constant:* `FlagChainID`
 
 ## Node Configuration (`node`)
 
-Settings related to the core behavior of the Rollkit node, including its mode of operation and block production parameters.
+Settings related to the core behavior of the Evolve node, including its mode of operation and block production parameters.
 
 **YAML Section:**
 
@@ -137,8 +137,8 @@ node:
 ```
 
 **Command-line Flag:**
-`--rollkit.node.aggregator` (boolean, presence enables it)
-*Example:* `--rollkit.node.aggregator`
+`--evolve.node.aggregator` (boolean, presence enables it)
+*Example:* `--evolve.node.aggregator`
 *Default:* `false`
 *Constant:* `FlagAggregator`
 
@@ -155,8 +155,8 @@ node:
 ```
 
 **Command-line Flag:**
-`--rollkit.node.light` (boolean, presence enables it)
-*Example:* `--rollkit.node.light`
+`--evolve.node.light` (boolean, presence enables it)
+*Example:* `--evolve.node.light`
 *Default:* `false`
 *Constant:* `FlagLight`
 
@@ -173,8 +173,8 @@ node:
 ```
 
 **Command-line Flag:**
-`--rollkit.node.block_time <duration>`
-*Example:* `--rollkit.node.block_time 2s`
+`--evolve.node.block_time <duration>`
+*Example:* `--evolve.node.block_time 2s`
 *Default:* `"1s"`
 *Constant:* `FlagBlockTime`
 
@@ -191,8 +191,8 @@ node:
 ```
 
 **Command-line Flag:**
-`--rollkit.node.max_pending_blocks <uint64>`
-*Example:* `--rollkit.node.max_pending_blocks 50`
+`--evolve.node.max_pending_blocks <uint64>`
+*Example:* `--evolve.node.max_pending_blocks 50`
 *Default:* `0` (no limit)
 *Constant:* `FlagMaxPendingBlocks`
 
@@ -209,8 +209,8 @@ node:
 ```
 
 **Command-line Flag:**
-`--rollkit.node.lazy_mode` (boolean, presence enables it)
-*Example:* `--rollkit.node.lazy_mode`
+`--evolve.node.lazy_mode` (boolean, presence enables it)
+*Example:* `--evolve.node.lazy_mode`
 *Default:* `false`
 *Constant:* `FlagLazyAggregator`
 
@@ -227,8 +227,8 @@ node:
 ```
 
 **Command-line Flag:**
-`--rollkit.node.lazy_block_interval <duration>`
-*Example:* `--rollkit.node.lazy_block_interval 1m`
+`--evolve.node.lazy_block_interval <duration>`
+*Example:* `--evolve.node.lazy_block_interval 1m`
 *Default:* `"30s"`
 *Constant:* `FlagLazyBlockTime`
 
@@ -245,14 +245,14 @@ node:
 ```
 
 **Command-line Flag:**
-`--rollkit.node.trusted_hash <string>`
-*Example:* `--rollkit.node.trusted_hash ABCDEF012345...`
+`--evolve.node.trusted_hash <string>`
+*Example:* `--evolve.node.trusted_hash ABCDEF012345...`
 *Default:* `""` (empty, sync from genesis)
 *Constant:* `FlagTrustedHash`
 
 ## Data Availability Configuration (`da`)
 
-Parameters for connecting and interacting with the Data Availability (DA) layer, which Rollkit uses to publish block data.
+Parameters for connecting and interacting with the Data Availability (DA) layer, which Evolve uses to publish block data.
 
 **YAML Section:**
 
@@ -264,7 +264,7 @@ da:
 ### DA Service Address
 
 **Description:**
-The network address (host:port) of the Data Availability layer service. Rollkit connects to this endpoint to submit and retrieve block data.
+The network address (host:port) of the Data Availability layer service. Evolve connects to this endpoint to submit and retrieve block data.
 
 **YAML:**
 
@@ -274,8 +274,8 @@ da:
 ```
 
 **Command-line Flag:**
-`--rollkit.da.address <string>`
-*Example:* `--rollkit.da.address 192.168.1.100:26659`
+`--evolve.da.address <string>`
+*Example:* `--evolve.da.address 192.168.1.100:26659`
 *Default:* `""` (empty, must be configured if DA is used)
 *Constant:* `FlagDAAddress`
 
@@ -292,8 +292,8 @@ da:
 ```
 
 **Command-line Flag:**
-`--rollkit.da.auth_token <string>`
-*Example:* `--rollkit.da.auth_token mysecrettoken`
+`--evolve.da.auth_token <string>`
+*Example:* `--evolve.da.auth_token mysecrettoken`
 *Default:* `""` (empty)
 *Constant:* `FlagDAAuthToken`
 
@@ -310,8 +310,8 @@ da:
 ```
 
 **Command-line Flag:**
-`--rollkit.da.gas_price <float64>`
-*Example:* `--rollkit.da.gas_price 0.05`
+`--evolve.da.gas_price <float64>`
+*Example:* `--evolve.da.gas_price 0.05`
 *Default:* `-1` (automatic)
 *Constant:* `FlagDAGasPrice`
 
@@ -328,8 +328,8 @@ da:
 ```
 
 **Command-line Flag:**
-`--rollkit.da.gas_multiplier <float64>`
-*Example:* `--rollkit.da.gas_multiplier 1.5`
+`--evolve.da.gas_multiplier <float64>`
+*Example:* `--evolve.da.gas_multiplier 1.5`
 *Default:* `1.0` (no multiplication)
 *Constant:* `FlagDAGasMultiplier`
 
@@ -346,8 +346,8 @@ da:
 ```
 
 **Command-line Flag:**
-`--rollkit.da.submit_options <string>`
-*Example:* `--rollkit.da.submit_options '{"custom_param":true}'`
+`--evolve.da.submit_options <string>`
+*Example:* `--evolve.da.submit_options '{"custom_param":true}'`
 *Default:* `""` (empty)
 *Constant:* `FlagDASubmitOptions`
 
@@ -364,8 +364,8 @@ da:
 ```
 
 **Command-line Flag:**
-`--rollkit.da.namespace <string>`
-*Example:* `--rollkit.da.namespace 0x1234567890abcdef`
+`--evolve.da.namespace <string>`
+*Example:* `--evolve.da.namespace 0x1234567890abcdef`
 *Default:* `""` (empty, must be configured)
 *Constant:* `FlagDANamespace`
 
@@ -386,15 +386,15 @@ da:
 ```
 
 **Command-line Flag:**
-`--rollkit.da.block_time <duration>`
-*Example:* `--rollkit.da.block_time 12s`
+`--evolve.da.block_time <duration>`
+*Example:* `--evolve.da.block_time 12s`
 *Default:* `"6s"`
 *Constant:* `FlagDABlockTime`
 
 ### DA Start Height
 
 **Description:**
-The block height on the DA layer from which Rollkit should begin syncing. This is useful when deploying a new chain on an existing DA chain, allowing it to ignore historical data before its inception.
+The block height on the DA layer from which Evolve should begin syncing. This is useful when deploying a new chain on an existing DA chain, allowing it to ignore historical data before its inception.
 
 **YAML:**
 
@@ -404,8 +404,8 @@ da:
 ```
 
 **Command-line Flag:**
-`--rollkit.da.start_height <uint64>`
-*Example:* `--rollkit.da.start_height 500000`
+`--evolve.da.start_height <uint64>`
+*Example:* `--evolve.da.start_height 500000`
 *Default:* `0` (sync from the beginning)
 *Constant:* `FlagDAStartHeight`
 
@@ -422,8 +422,8 @@ da:
 ```
 
 **Command-line Flag:**
-`--rollkit.da.mempool_ttl <uint64>`
-*Example:* `--rollkit.da.mempool_ttl 30`
+`--evolve.da.mempool_ttl <uint64>`
+*Example:* `--evolve.da.mempool_ttl 30`
 *Default:* `20`
 *Constant:* `FlagDAMempoolTTL`
 
@@ -441,7 +441,7 @@ p2p:
 ### P2P Listen Address
 
 **Description:**
-The network address (host:port) on which the Rollkit node will listen for incoming P2P connections from other nodes.
+The network address (host:port) on which the Evolve node will listen for incoming P2P connections from other nodes.
 
 **YAML:**
 
@@ -451,8 +451,8 @@ p2p:
 ```
 
 **Command-line Flag:**
-`--rollkit.p2p.listen_address <string>`
-*Example:* `--rollkit.p2p.listen_address /ip4/127.0.0.1/tcp/26656`
+`--evolve.p2p.listen_address <string>`
+*Example:* `--evolve.p2p.listen_address /ip4/127.0.0.1/tcp/26656`
 *Default:* `"/ip4/0.0.0.0/tcp/7676"`
 *Constant:* `FlagP2PListenAddress`
 
@@ -469,8 +469,8 @@ p2p:
 ```
 
 **Command-line Flag:**
-`--rollkit.p2p.peers <string>`
-*Example:* `--rollkit.p2p.peers /dns4/seed.example.com/tcp/26656/p2p/12D3KooW...`
+`--evolve.p2p.peers <string>`
+*Example:* `--evolve.p2p.peers /dns4/seed.example.com/tcp/26656/p2p/12D3KooW...`
 *Default:* `""` (empty)
 *Constant:* `FlagP2PPeers`
 
@@ -487,8 +487,8 @@ p2p:
 ```
 
 **Command-line Flag:**
-`--rollkit.p2p.blocked_peers <string>`
-*Example:* `--rollkit.p2p.blocked_peers 12D3KooW...,12D3KooX...`
+`--evolve.p2p.blocked_peers <string>`
+*Example:* `--evolve.p2p.blocked_peers 12D3KooW...,12D3KooX...`
 *Default:* `""` (empty)
 *Constant:* `FlagP2PBlockedPeers`
 
@@ -505,14 +505,14 @@ p2p:
 ```
 
 **Command-line Flag:**
-`--rollkit.p2p.allowed_peers <string>`
-*Example:* `--rollkit.p2p.allowed_peers 12D3KooY...,12D3KooZ...`
+`--evolve.p2p.allowed_peers <string>`
+*Example:* `--evolve.p2p.allowed_peers 12D3KooY...,12D3KooZ...`
 *Default:* `""` (empty, allow all unless blocked)
 *Constant:* `FlagP2PAllowedPeers`
 
 ## RPC Configuration (`rpc`)
 
-Settings for the Remote Procedure Call (RPC) server, which allows clients and applications to interact with the Rollkit node.
+Settings for the Remote Procedure Call (RPC) server, which allows clients and applications to interact with the Evolve node.
 
 **YAML Section:**
 
@@ -534,8 +534,8 @@ rpc:
 ```
 
 **Command-line Flag:**
-`--rollkit.rpc.address <string>`
-*Example:* `--rollkit.rpc.address 0.0.0.0:26657`
+`--evolve.rpc.address <string>`
+*Example:* `--evolve.rpc.address 0.0.0.0:26657`
 *Default:* `"127.0.0.1:7331"`
 *Constant:* `FlagRPCAddress`
 
@@ -553,7 +553,7 @@ instrumentation:
 ### Enable Prometheus Metrics
 
 **Description:**
-If true, enables the Prometheus metrics endpoint, allowing Prometheus to scrape operational data from the Rollkit node.
+If true, enables the Prometheus metrics endpoint, allowing Prometheus to scrape operational data from the Evolve node.
 
 **YAML:**
 
@@ -563,8 +563,8 @@ instrumentation:
 ```
 
 **Command-line Flag:**
-`--rollkit.instrumentation.prometheus` (boolean, presence enables it)
-*Example:* `--rollkit.instrumentation.prometheus`
+`--evolve.instrumentation.prometheus` (boolean, presence enables it)
+*Example:* `--evolve.instrumentation.prometheus`
 *Default:* `false`
 *Constant:* `FlagPrometheus`
 
@@ -583,8 +583,8 @@ instrumentation:
 ```
 
 **Command-line Flag:**
-`--rollkit.instrumentation.prometheus_listen_addr <string>`
-*Example:* `--rollkit.instrumentation.prometheus_listen_addr 0.0.0.0:9090`
+`--evolve.instrumentation.prometheus_listen_addr <string>`
+*Example:* `--evolve.instrumentation.prometheus_listen_addr 0.0.0.0:9090`
 *Default:* `":2112"`
 *Constant:* `FlagPrometheusListenAddr`
 
@@ -601,8 +601,8 @@ instrumentation:
 ```
 
 **Command-line Flag:**
-`--rollkit.instrumentation.max_open_connections <int>`
-*Example:* `--rollkit.instrumentation.max_open_connections 50`
+`--evolve.instrumentation.max_open_connections <int>`
+*Example:* `--evolve.instrumentation.max_open_connections 50`
 *Default:* (Refer to `DefaultInstrumentationConfig()` in code, typically a reasonable number like 100)
 *Constant:* `FlagMaxOpenConnections`
 
@@ -619,8 +619,8 @@ instrumentation:
 ```
 
 **Command-line Flag:**
-`--rollkit.instrumentation.pprof` (boolean, presence enables it)
-*Example:* `--rollkit.instrumentation.pprof`
+`--evolve.instrumentation.pprof` (boolean, presence enables it)
+*Example:* `--evolve.instrumentation.pprof`
 *Default:* `false`
 *Constant:* `FlagPprof`
 
@@ -637,14 +637,14 @@ instrumentation:
 ```
 
 **Command-line Flag:**
-`--rollkit.instrumentation.pprof_listen_addr <string>`
-*Example:* `--rollkit.instrumentation.pprof_listen_addr 0.0.0.0:6061`
+`--evolve.instrumentation.pprof_listen_addr <string>`
+*Example:* `--evolve.instrumentation.pprof_listen_addr 0.0.0.0:6061`
 *Default:* `"localhost:6060"`
 *Constant:* `FlagPprofListenAddr`
 
 ## Logging Configuration (`log`)
 
-Settings that control the verbosity and format of log output from the Rollkit node. These are typically set via global flags.
+Settings that control the verbosity and format of log output from the Evolve node. These are typically set via global flags.
 
 **YAML Section:**
 
@@ -669,7 +669,7 @@ log:
 `--log.level <string>` (Note: some applications might use a different flag name like `--log_level`)
 *Example:* `--log.level debug`
 *Default:* `"info"`
-*Constant:* `FlagLogLevel` (value: "rollkit.log.level", but often overridden by global app flags)
+*Constant:* `FlagLogLevel` (value: "evolve.log.level", but often overridden by global app flags)
 
 ### Log Format
 
@@ -687,7 +687,7 @@ log:
 `--log.format <string>` (Note: some applications might use a different flag name like `--log_format`)
 *Example:* `--log.format json`
 *Default:* `"text"`
-*Constant:* `FlagLogFormat` (value: "rollkit.log.format", but often overridden by global app flags)
+*Constant:* `FlagLogFormat` (value: "evolve.log.format", but often overridden by global app flags)
 
 ### Log Trace (Stack Traces)
 
@@ -705,7 +705,7 @@ log:
 `--log.trace` (boolean, presence enables it; Note: some applications might use a different flag name like `--log_trace`)
 *Example:* `--log.trace`
 *Default:* `false`
-*Constant:* `FlagLogTrace` (value: "rollkit.log.trace", but often overridden by global app flags)
+*Constant:* `FlagLogTrace` (value: "evolve.log.trace", but often overridden by global app flags)
 
 ## Signer Configuration (`signer`)
 
@@ -731,8 +731,8 @@ signer:
 ```
 
 **Command-line Flag:**
-`--rollkit.signer.type <string>`
-*Example:* `--rollkit.signer.type grpc`
+`--evolve.signer.type <string>`
+*Example:* `--evolve.signer.type grpc`
 *Default:* (Depends on application, often "file" or none if not an aggregator)
 *Constant:* `FlagSignerType`
 
@@ -750,8 +750,8 @@ signer:
 ```
 
 **Command-line Flag:**
-`--rollkit.signer.path <string>`
-*Example:* `--rollkit.signer.path ./keys/mykey.pem`
+`--evolve.signer.path <string>`
+*Example:* `--evolve.signer.path ./keys/mykey.pem`
 *Default:* (Depends on application)
 *Constant:* `FlagSignerPath`
 
@@ -764,12 +764,12 @@ The passphrase required to decrypt or access the signer key, particularly if usi
 This is typically not stored in the YAML file for security reasons but provided via flag or environment variable.
 
 **Command-line Flag:**
-`--rollkit.signer.passphrase <string>`
-*Example:* `--rollkit.signer.passphrase "mysecretpassphrase"`
+`--evolve.signer.passphrase <string>`
+*Example:* `--evolve.signer.passphrase "mysecretpassphrase"`
 *Default:* `""` (empty)
 *Constant:* `FlagSignerPassphrase`
 *Note:* Be cautious with providing passphrases directly on the command line in shared environments due to history logging. Environment variables or secure input methods are often preferred.
 
 ---
 
-This reference should help you configure your Rollkit node effectively. Always refer to the specific version of Rollkit you are using, as options and defaults may change over time.
+This reference should help you configure your Evolve node effectively. Always refer to the specific version of Evolve you are using, as options and defaults may change over time.

@@ -28,7 +28,7 @@ tree $HOME/.testapp
 ├── config
 │   ├── genesis.json
 │   ├── node_key.json
-│   ├── rollkit.yaml
+│   ├── evolve.yaml
 │   └── signer.json
 └── data
     ├── cache
@@ -90,7 +90,7 @@ tree $HOME/.gm
 │   │   └── gentx-418077c64f0cf5824c24487c9cce38241de677cd.json
 │   ├── node_key.json
 │   ├── priv_validator_key.json
-│   └── rollkit.yaml
+│   └── evolve.yaml
 ├── data
 │   ├── application.db
 │   │   ├── 000001.log
@@ -110,7 +110,7 @@ tree $HOME/.gm
 │   │       ├── items_by_hash.gob
 │   │       └── items_by_height.gob
 │   ├── priv_validator_state.json
-│   ├── rollkit
+│   ├── evolve
 │   │   ├── 000001.sst
 │   │   ├── 000001.vlog
 │   │   ├── DISCARD

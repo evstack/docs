@@ -1,6 +1,6 @@
 # Single Sequencer
 
-A single sequencer is the simplest sequencing architecture for a Rollkit-based chain. In this model, one node (the sequencer) is responsible for ordering transactions, producing blocks, and submitting data to the data availability (DA) layer.
+A single sequencer is the simplest sequencing architecture for an Evolve-based chain. In this model, one node (the sequencer) is responsible for ordering transactions, producing blocks, and submitting data to the data availability (DA) layer.
 
 ## How the Single Sequencer Model Works
 

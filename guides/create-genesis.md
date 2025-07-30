@@ -36,7 +36,7 @@ make install
 Once completed, run the following command to ensure that the `/Users/you/.gm` directory is present:
 
 ```sh
-ignite rollkit init
+ignite evolve init
 ```
 
 This (re)creates an `gmd` binary that will be used for the rest of the tutorials to run all the operations on the chain.
@@ -103,7 +103,7 @@ Copy the centralized sequencer address into `genesis.json`:
 ```sh
 ADDRESS=$(jq -r '.address' ~/.$CHAIN_ID/config/priv_validator_key.json)
 PUB_KEY=$(jq -r '.pub_key' ~/.$CHAIN_ID/config/priv_validator_key.json)
-jq --argjson pubKey "$PUB_KEY" '.consensus["validators"]=[{"address": "'$ADDRESS'", "pub_key": $pubKey, "power": "1000", "name": "Rollkit Sequencer"}]' ~/.$CHAIN_ID/config/genesis.json > temp.json && mv temp.json ~/.$CHAIN_ID/config/genesis.json
+jq --argjson pubKey "$PUB_KEY" '.consensus["validators"]=[{"address": "'$ADDRESS'", "pub_key": $pubKey, "power": "1000", "name": "Evolve Sequencer"}]' ~/.$CHAIN_ID/config/genesis.json > temp.json && mv temp.json ~/.$CHAIN_ID/config/genesis.json
 ```
 
 ## Starting the chain
@@ -113,7 +113,7 @@ Finally, start the chain with your start command.
 For example, start the simple ignite chain with the following command:
 
 ```sh
-gmd start --rollkit.node.aggregator --chain_id $CHAIN_ID
+gmd start --evolve.node.aggregator --chain_id $CHAIN_ID
 ```
 
 ## Summary

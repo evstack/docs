@@ -1,8 +1,8 @@
 name: Deploy PR previews
 
 on:
-  # This workflow requires pull_request and won't work with pull_request_target 
-  # due to github permissions 
+  # This workflow requires pull_request and won't work with pull_request_target
+  # due to github permissions
   pull_request:
     types:
       - opened
@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: yarn
 
       - name: Install dependencies
@@ -37,7 +37,7 @@ jobs:
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: .vitepress/dist
-          deploy-repository: rollkit/docs-preview
+          deploy-repository: evstack/docs-preview
           token: ${{ secrets.PREVIEW_DEPLOY }}
           preview-branch: main
           umbrella-dir: .

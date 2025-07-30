@@ -19,7 +19,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## High-Level Architecture
 
-This is a **VitePress-based documentation site** for Rollkit. Key architectural elements:
+This is a **VitePress-based documentation site** for Evolve. Key architectural elements:
 
 ### Content Organization
 

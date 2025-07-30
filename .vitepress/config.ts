@@ -9,50 +9,24 @@ const { BASE: base = "/" } = process.env;
 // https://vitepress.dev/reference/site-config
 export default withMermaid({
   lang: "en-US",
-  title: "Rollkit",
-  description: "The unstoppable stack",
+  title: " ",
+  titleTemplate: false,
+  description: "Launch Fast. Build Your Own Network.",
   lastUpdated: true,
   cleanUrls: true,
   ignoreDeadLinks: true,
   base: base,
   sitemap: {
-    hostname: "https://rollkit.dev",
+    hostname: "https://evolve.dev",
   },
 
   head: [
     ["link", { rel: "icon", href: "/img/favicon.svg", type: "image/svg+xml" }],
     ["link", { rel: "icon", href: "/img/favicon.png", type: "image/png" }],
-    // [
-    //   'link',
-    //   {
-    //     rel: 'icon',
-    //     type: 'image/svg+xml',
-    //     href: '/img/favicon-dark.svg',
-    //     media: '(prefers-color-scheme: dark)',
-    //   },
-    // ],
-    // [
-    //   'link',
-    //   {
-    //     rel: 'icon',
-    //     type: 'image/png',
-    //     href: '/img/favicon-dark.png',
-    //     media: '(prefers-color-scheme: dark)',
-    //   },
-    // ],
     [
       "link",
       { rel: "shortcut icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
-    // [
-    //   'link',
-    //   {
-    //     rel: 'icon',
-    //     type: 'image/x-icon',
-    //     href: '/img/favicon-dark.ico',
-    //     media: '(prefers-color-scheme: dark)',
-    //   },
-    // ],
     ["meta", { name: "msapplication-TileColor", content: "#fff" }],
     ["meta", { name: "theme-color", content: "#fff" }],
     [
@@ -67,33 +41,16 @@ export default withMermaid({
       "meta",
       {
         property: "description",
-        content: "The unstoppable stack.",
+        content: "Own It. Shape It. Launch It. Evolve your app",
       },
     ],
     ["meta", { httpEquiv: "Content-Language", content: "en" }],
     ["meta", { name: "twitter:card", content: "summary_large_image" }],
-    ["meta", { name: "twitter:image", content: "/img/Rollkit-cover.jpg" }],
-    ["meta", { name: "twitter:site:domain", content: "rollkit.dev" }],
-    ["meta", { name: "twitter:url", content: "https://rollkit.dev" }],
-    ["meta", { name: "og:image", content: "/img/Rollkit-cover.jpg" }],
-    ["meta", { name: "apple-mobile-web-app-title", content: "Rollkit" }],
-    [
-      "script",
-      {},
-      `
-      window.chatbaseConfig = {
-        chatbotId: "sw0sRxREFEQLTdqwC_Fbe",
-      }
-      `,
-    ],
-    [
-      "script",
-      {
-        src: "https://www.chatbase.co/embed.min.js",
-        id: "sw0sRxREFEQLTdqwC_Fbe",
-        defer: true,
-      },
-    ],
+    ["meta", { name: "twitter:image", content: "/img/Evolve-cover.jpg" }],
+    ["meta", { name: "twitter:site:domain", content: "evolve.dev" }],
+    ["meta", { name: "twitter:url", content: "https://evolve.dev" }],
+    ["meta", { name: "og:image", content: "/img/Evolve-cover.jpg" }],
+    ["meta", { name: "apple-mobile-web-app-title", content: "Evolve" }],
     [
       "script",
       {
@@ -102,14 +59,45 @@ export default withMermaid({
         defer: true,
       },
     ],
-    [
-      "script",
-      {
-        src: "https://platform.twitter.com/widgets.js",
-        async: true,
-      },
-    ],
   ],
+
+  // // Build optimizations
+  // vite: {
+  //   build: {
+  //     rollupOptions: {
+  //       output: {
+  //         manualChunks: (id) => {
+  //           // Extract vendor chunks
+  //           if (id.includes('node_modules')) {
+  //             if (id.includes('vue') || id.includes('@vue')) {
+  //               return 'vue';
+  //             }
+  //             if (id.includes('mermaid')) {
+  //               return 'mermaid';
+  //             }
+  //             return 'vendor';
+  //           }
+  //         },
+  //       },
+  //     },
+  //     // Enable minification
+  //     minify: 'terser',
+  //     terserOptions: {
+  //       compress: {
+  //         drop_console: true,
+  //         drop_debugger: true,
+  //       },
+  //     },
+  //     // Optimize chunk size
+  //     chunkSizeWarningLimit: 1000,
+  //   },
+  //   // Optimize dependencies
+  //   optimizeDeps: {
+  //     include: ['vue', '@vue/runtime-core', '@vue/runtime-dom', '@vue/shared'],
+  //     exclude: ['vitepress'],
+  //   },
+  // },
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: nav(),
@@ -119,7 +107,7 @@ export default withMermaid({
 
     footer: {
       message: "Released under the APACHE-2.0 License",
-      copyright: "Copyright © 2023 Rollkit",
+      copyright: "Copyright © 2024 Evolve",
     },
 
     search: {
@@ -134,20 +122,20 @@ export default withMermaid({
     },
 
     editLink: {
-      pattern: "https://github.com/rollkit/docs/edit/main/:path",
+      pattern: "https://github.com/evstack/docs/edit/main/:path",
       text: "Edit this page on GitHub",
     },
 
     logo: {
-      alt: "Rollkit Logo",
-      light: "/img/logo.svg",
-      dark: "/img/logo-dark.svg",
+      alt: "Evolve Logo",
+      light: "/img/logo.png",
+      dark: "/img/logo.png",
     },
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/rollkit/rollkit" },
-      { icon: "twitter", link: "https://twitter.com/RollkitDev" },
-      { icon: { svg: telegramSVG }, link: "https://t.me/rollkit" },
+      { icon: "github", link: "https://github.com/evstack" },
+      { icon: "twitter", link: "https://twitter.com/ev_stack" },
+      { icon: { svg: telegramSVG }, link: "https://t.me/+2p8-IYf6sQ0zNmEx" },
     ],
   },
   transformPageData(pageData) {
@@ -158,8 +146,8 @@ export default withMermaid({
         name: "og:title",
         content:
           pageData.frontmatter.layout === "home"
-            ? `Rollkit`
-            : `${pageData.title} | Rollkit`,
+            ? `Evolve`
+            : `${pageData.title} | Evolve`,
       },
       {
         name: "og:description",
@@ -184,7 +172,7 @@ function sidebarHome() {
       collapsed: true,
       items: [
         {
-          text: "About Rollkit",
+          text: "About Evolve",
           link: "/learn/about",
         },
         {
@@ -201,7 +189,7 @@ function sidebarHome() {
         },
         {
           text: "Execution",
-          link: "/learn/execution"
+          link: "/learn/execution",
         },
         {
           text: "Technical Specifications",
@@ -244,13 +232,13 @@ function sidebarHome() {
             },
           ],
         },
-        {
-          text: "Execution",
-          collapsed: true,
-          items: [
-            { text: "CosmWasm", link: "/guides/execution/cosmwasm" },
-          ],
-        },
+        // {
+        //   text: "Execution",
+        //   collapsed: true,
+        //   items: [
+        //     { text: "CosmWasm", link: "/guides/execution/cosmwasm" },
+        //   ],
+        // },
         {
           text: "Deploy your chain",
           collapsed: true,
@@ -281,7 +269,7 @@ function sidebarHome() {
               text: "Reth State Backup",
               link: "/guides/evm/reth-backup",
             },
-          ]
+          ],
         },
         {
           text: "Run a Full Node",
@@ -296,8 +284,8 @@ function sidebarHome() {
           link: "/guides/reset-state",
         },
         {
-          text: "CometBFT into a Rollkit app",
-          link: "/guides/cometbft-to-rollkit",
+          text: "CometBFT into a Evolve app",
+          link: "/guides/cometbft-to-evolve",
         },
         {
           text: "Create genesis for your chain",
@@ -316,13 +304,7 @@ function sidebarHome() {
     {
       text: "Blog",
       collapsed: true,
-      items: [
-        { text: "Overview", link: "/blog/overview" },
-        {
-          text: "Rollkit: The First Sovereign Rollup Framework",
-          link: "/blog/rollkit-the-first-sovereign-rollup-framework",
-        },
-      ],
+      items: [{ text: "Overview", link: "/blog/overview" }],
     },
   ];
 }

@@ -3,18 +3,29 @@
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
  */
 
+/* Import Evolve brand fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
 /**
  * Colors
  * -------------------------------------------------------------------------- */
 
  :root {
-  --vp-c-brand: #0c92f2;
-  --vp-c-brand-light: #49adf5;
-  --vp-c-brand-lighter: #85c8f8;
-  --vp-c-brand-lightest: #c2e3fb;
-  --vp-c-brand-dark: #096db5;
-  --vp-c-brand-darker: #064979;
-  --vp-c-brand-dimm: rgba(0, 181, 144, 0.08);
+  --vp-c-brand: #FF0033;
+  --vp-c-brand-light: #FF3355;
+  --vp-c-brand-lighter: #FF6677;
+  --vp-c-brand-lightest: #FFCCDD;
+  --vp-c-brand-dark: #CC0029;
+  --vp-c-brand-darker: #990020;
+  --vp-c-brand-dimm: rgba(255, 0, 51, 0.08);
+  
+  /* Additional Evolve brand colors */
+  --vp-c-bg: #0A0A0A;
+  --vp-c-bg-soft: #141414;
+  --vp-c-bg-mute: #1A1A1A;
+  --vp-c-slate: #475569;
+  --vp-c-violet: #4C1D95;
+  --vp-c-violet-light: #6D28D9;
 }
 
 /**
@@ -41,27 +52,24 @@
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(
     120deg,
-    #096db5 30%,
-    #3FA9F5
+    #FF0033 30%,
+    #6D28D9
   );
 
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #096db5 50%,
-    #3FA9F5 50%
-  );
-  --vp-home-hero-image-filter: blur(40px);
+  /* Remove gradient background for hero image */
+  --vp-home-hero-image-background-image: none;
+  --vp-home-hero-image-filter: none;
 }
 
 @media (min-width: 640px) {
   :root {
-    --vp-home-hero-image-filter: blur(56px);
+    --vp-home-hero-image-filter: none;
   }
 }
 
 @media (min-width: 960px) {
   :root {
-    --vp-home-hero-image-filter: blur(72px);
+    --vp-home-hero-image-filter: none;
   }
 }
 
@@ -87,5 +95,354 @@
 
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand) !important;
+}
+
+/**
+ * Typography
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --vp-font-family-mono: 'IBM Plex Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/**
+ * Dark Mode Adjustments
+ * -------------------------------------------------------------------------- */
+
+.dark {
+  --vp-c-bg: #000000;
+  --vp-c-bg-soft: #0A0A0A;
+  --vp-c-bg-mute: #141414;
+  --vp-c-bg-alt: #000000;
+}
+
+/**
+ * Homepage Customizations
+ * -------------------------------------------------------------------------- */
+
+/* Center align hero text and buttons */
+.VPHero .VPHomeHero {
+  text-align: center;
+}
+
+.VPHero .name,
+.VPHero .text,
+.VPHero .tagline {
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Center the action buttons */
+.VPHero .actions {
+  justify-content: center !important;
+  display: flex !important;
+  gap: 16px;
+}
+
+.VPHero .VPButton {
+  margin: 0 !important;
+}
+
+/* Simple grid background - applied to body only */
+body {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(#FF0033 1px, transparent 1px),
+    linear-gradient(90deg, #FF0033 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-attachment: fixed;
+}
+
+.dark body {
+  background-color: #000000;
+}
+
+/* Adjust grid opacity for light/dark modes with thicker lines */
+body {
+  background-image: 
+    linear-gradient(rgba(255, 0, 51, 0.12) 3px, transparent 3px),
+    linear-gradient(90deg, rgba(255, 0, 51, 0.12) 3px, transparent 3px);
+}
+
+.dark body {
+  background-image: 
+    linear-gradient(rgba(255, 0, 51, 0.15) 3px, transparent 3px),
+    linear-gradient(90deg, rgba(255, 0, 51, 0.15) 3px, transparent 3px);
+}
+
+/* Style the hero image (logo) */
+.VPHero .VPImage {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Make the hero logo bigger */
+.VPHero .VPImage img {
+  height: 120px !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* Make all layout components transparent to show body background */
+.Layout,
+.VPContent,
+.VPDoc,
+.VPHome {
+  background-color: transparent !important;
+}
+
+/* Make content areas transparent by default to show body grid background */
+.VPContent,
+.VPHome,
+.Layout > * {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Documentation pages - solid background for readability */
+.VPDoc {
+  background-color: #FFFFFF !important;
+  min-height: 100vh;
+}
+
+.dark .VPDoc {
+  background-color: #0A0A0A !important;
+}
+
+/* Documentation content area */
+.VPDoc .container,
+.VPDoc .content,
+.VPDocContent {
+  background-color: #FFFFFF !important;
+}
+
+.dark .VPDoc .container,
+.dark .VPDoc .content,
+.dark .VPDocContent {
+  background-color: #0A0A0A !important;
+}
+
+/* Add padding to doc content for better readability */
+.VPDoc .VPDocOutlineDropdown,
+.VPDoc .content-container {
+  padding: 1rem;
+}
+
+/* Sidebar background for documentation pages */
+.VPSidebar {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(8px);
+}
+
+.dark .VPSidebar {
+  background-color: rgba(10, 10, 10, 0.95) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Feature boxes - ensure proper backgrounds in light/dark modes */
+.VPFeature {
+  background-color: #FFFFFF !important;
+  border-color: #E5E5E5 !important;
+}
+
+.dark .VPFeature {
+  background-color: #0A0A0A !important;
+  border-color: #2A2A2A !important;
+}
+
+/* Ensure all VitePress components respect light/dark backgrounds */
+:root {
+  --vp-c-bg: #FFFFFF;
+  --vp-c-bg-soft: #F6F6F6;
+  --vp-c-bg-mute: #F0F0F0;
+}
+
+/* Fix navbar backgrounds - more specific targeting including scroll states */
+.VPNav,
+.VPNav .VPNavBar,
+.VPNavBar,
+header.VPNav,
+.VPNav.scrolled,
+.VPNavBar.scrolled,
+.VPNav.filled,
+.VPNavBar.filled {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .VPNav,
+.dark .VPNav .VPNavBar,
+.dark .VPNavBar,
+.dark header.VPNav,
+.dark .VPNav.scrolled,
+.dark .VPNavBar.scrolled,
+.dark .VPNav.filled,
+.dark .VPNavBar.filled {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 0, 51, 0.2) !important;
+}
+
+/* Target the main nav container */
+.VPNavBar.has-sidebar,
+.VPNavBar.no-sidebar {
+  background-color: inherit !important;
+}
+
+.VPLocalNav {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .VPLocalNav {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 0, 51, 0.2) !important;
+}
+
+/* Footer styling with grid background */
+.VPFooter {
+  background-color: #FFFFFF !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  position: relative;
+}
+
+.dark .VPFooter {
+  background-color: #000000 !important;
+  border-top: 1px solid rgba(255, 0, 51, 0.2) !important;
+}
+
+/* Footer also transparent to show body grid background */
+.VPFooter .VPFooterCopyright {
+  background-color: transparent;
+  padding: 8px 16px;
+}
+
+/* Ensure nav screen (mobile menu) also has correct background */
+.VPNavScreen {
+  background-color: #FFFFFF !important;
+}
+
+.dark .VPNavScreen {
+  background-color: #000000 !important;
+}
+
+/* Override VitePress default nav styles completely */
+html.dark {
+  --vp-nav-bg-color: rgba(0, 0, 0, 0.8) !important;
+  --vp-c-bg: #000000 !important;
+  --vp-c-bg-soft: #000000 !important;
+}
+
+html:not(.dark) {
+  --vp-nav-bg-color: rgba(255, 255, 255, 0.8) !important;
+  --vp-c-bg: #FFFFFF !important;
+  --vp-c-bg-soft: #FFFFFF !important;
+}
+
+/* Force nav background using CSS variables */
+:root {
+  --vp-nav-bg-color: rgba(255, 255, 255, 0.8);
+  --vp-nav-height: 55px;
+}
+
+.dark {
+  --vp-nav-bg-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Apply the variable to ALL nav elements with maximum specificity */
+.VPNav, 
+.VPNavBar,
+.VPNav *,
+.VPNavBar *,
+html .VPNav,
+html .VPNavBar,
+html.dark .VPNav,
+html.dark .VPNavBar {
+  background: var(--vp-nav-bg-color) !important;
+}
+
+/* Ensure nav stays consistent during scroll transitions */
+.VPNav[data-scrolled="true"],
+.VPNavBar[data-scrolled="true"] {
+  background: var(--vp-nav-bg-color) !important;
+}
+
+/**
+ * Custom Logo Styling
+ * -------------------------------------------------------------------------- */
+
+/* Make the logo bigger */
+.VPNavBarTitle .VPImage {
+  height: 55px !important;
+  width: auto !important;
+}
+
+/* Adjust logo container */
+.VPNavBarTitle {
+  display: flex;
+  align-items: center;
+}
+
+/* Remove any max width constraints on the logo */
+.VPNavBarTitle .logo {
+  max-width: none !important;
+  height: 55px !important;
+}
+
+/* Ensure the logo link takes full height */
+.VPNavBarTitle a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Make sure the image inside logo takes full size */
+.VPNavBarTitle img {
+  height: 55px !important;
+  width: auto !important;
+  max-height: 55px !important;
+}
+
+/**
+ * Dark Mode Toggle Styling
+ * -------------------------------------------------------------------------- */
+
+/* Make the dark mode toggle more visible */
+.VPSwitch {
+  background-color: var(--vp-c-bg-mute) !important;
+  border: 1px solid var(--vp-c-divider) !important;
+}
+
+/* Style the toggle button in light mode */
+.VPSwitch .check {
+  background-color: var(--vp-c-brand) !important;
+}
+
+/* Add hover effect */
+.VPSwitch:hover {
+  border-color: var(--vp-c-brand) !important;
+}
+
+/* Make the sun/moon icons more visible */
+.VPSwitchAppearance {
+  opacity: 1 !important;
+}
+
+.VPSwitchAppearance svg {
+  fill: var(--vp-c-text-2) !important;
+}
+
+/* Ensure the switch track is visible */
+.VPSwitch .slider {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .VPSwitch .slider {
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
