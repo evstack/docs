@@ -10,7 +10,7 @@ No fees. No middlemen. No revenue share.
 
 ## What is Evolve?
 
-Evolve is a launch stack for sovereign L1s. It gives you full control over execution — without CometBFT, validator ops, or lock-in.
+Evolve is a launch stack for L1s. It gives you full control over execution — without CometBFT, validator ops, or lock-in.
 
 It's [open-source](https://github.com/evstack/ev-node), production-ready, and fully composable.
 
@@ -52,7 +52,7 @@ In a potential future with millions of chains, it's unlikely all of those chains
 
 ## Why Evolve?
 
-Evolve solves the challenges encountered during the deployment of a smart contract or a new layer 1, by minimizing these tradeoffs through the implementation of sovereign chains.
+Evolve solves the challenges encountered during the deployment of a smart contract or a new layer 1, by minimizing these tradeoffs through the implementation of evolve chains.
 
 With Evolve, developers can benefit from:
 
@@ -64,25 +64,25 @@ With Evolve, developers can benefit from:
 
 - **Faster time-to-market:** Evolve eliminates the need to bootstrap a validator set, manage a consensus network, incur high economic costs, and face other trade-offs that come with deploying a legacy layer 1\. Evolve's goal is to make deploying a chain as easy as it is to deploy a smart contract, cutting the time it takes to bring blockchain products to market from months (or even years) to just minutes.
 
-- **Sovereignty**: Evolve also enables developers to deploy sovereign chains for cases where communities require sovereignty.
+- **Sovereignty**: Evolve also enables developers to deploy chains for cases where communities require sovereignty.
 
 ## How can you use Evolve?
 
-As briefly mentioned above, Evolve could be used in many different ways. From sovereign chains, to settlement layers, and in the future even to L3s.
+As briefly mentioned above, Evolve could be used in many different ways. From chains, to settlement layers, and in the future even to L3s.
 
 ### Chain with any VM
 
 Evolve gives developers the flexibility to use pre-existing ABCI-compatible state machines or create a custom state machine tailored to their chain needs. Evolve does not restrict the use of any specific virtual machine, allowing developers to experiment and bring innovative applications to life.
 
-### Sovereign Cosmos SDK
+### Cosmos SDK
 
-Similarly to how developers utilize the Cosmos SDK to build a sovereign layer 1 chain, the Cosmos SDK could be utilized to create a Evolve-compatible chain. Cosmos-SDK has great [documentation](https://docs.cosmos.network/main) and tooling that developers can leverage to learn.
+Similarly to how developers utilize the Cosmos SDK to build a layer 1 chain, the Cosmos SDK could be utilized to create a Evolve-compatible chain. Cosmos-SDK has great [documentation](https://docs.cosmos.network/main) and tooling that developers can leverage to learn.
 
 Another possibility is taking an existing layer 1 built with the Cosmos SDK and deploying it as a Evolve chain. Evolve gives your network a forward path. Migrate seamlessly, keep your logic, and evolve into a modular, high-performance system without CometBFT bottlenecks and zero validator overhead.
 
 ### Build a settlement layer
 
-[Settlement layers](https://celestia.org/learn/modular-settlement-layers/settlement-in-the-modular-stack/) are ideal for developers who want to avoid deploying sovereign chains. They provide a platform for chains to verify proofs and resolve disputes. Additionally, they act as a hub for chains to facilitate trust-minimized token transfers and liquidity sharing between chains that share the same settlement layer. Think of settlement layers as a special type of execution layer.
+[Settlement layers](https://celestia.org/learn/modular-settlement-layers/settlement-in-the-modular-stack/) are ideal for developers who want to avoid deploying chains. They provide a platform for chains to verify proofs and resolve disputes. Additionally, they act as a hub for chains to facilitate trust-minimized token transfers and liquidity sharing between chains that share the same settlement layer. Think of settlement layers as a special type of execution layer.
 
 ## When can you use Evolve?
 
