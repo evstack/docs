@@ -11,7 +11,7 @@ Here you'll find comprehensive guides, and reference materials to help you make 
 To get started, clone the repository and run the following:
 
 ```bash
-yarn run docs:dev
+yarn run dev
 ```
 
 This documentation site is built with [VitePress](https://vitepress.dev)
