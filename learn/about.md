@@ -46,7 +46,7 @@ Deploying a new chain might sound like the perfect solution for the problems lis
 
 Deploying a legacy layer 1 has huge barriers to entry: time, capital, token emissions and expertise.
 
-In order to secure the network, developers must bootstrap a sufficiently secure set of validators, incurring the overhead of managing a full consensus network. This requires paying validators with inflationary tokens, putting the network‘s business sustainability at risk.etwork effects are also critical for success, but can be challenging to achieve as the network must gain widespread adoption to be secure and valuable.
+In order to secure the network, developers must bootstrap a sufficiently secure set of validators, incurring the overhead of managing a full consensus network. This requires paying validators with inflationary tokens, putting the network's business sustainability at risk. Network effects are also critical for success, but can be challenging to achieve as the network must gain widespread adoption to be secure and valuable.
 
 In a potential future with millions of chains, it's unlikely all of those chains will be able to sustainably attract a sufficiently secure and decentralized validator set.
 
