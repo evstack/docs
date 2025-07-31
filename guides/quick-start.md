@@ -8,7 +8,7 @@ import constants from '../.vitepress/constants/constants.js'
 
 # Quick start guide
 
-Welcome to Evolve, a sovereign chain framework! The easiest way to launch your evolve network node is by using the Testapp CLI.
+Welcome to Evolve, a chain framework! The easiest way to launch your network node is by using the Testapp CLI.
 
 ## 📦 Install Testapp (CLI)
 
