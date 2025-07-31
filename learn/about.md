@@ -12,9 +12,9 @@ No fees. No middlemen. No revenue share.
 
 Evolve is a launch stack for sovereign L1s. It gives you full control over execution — without CometBFT, validator ops, or lock-in.
 
-It’s [open-source](https://github.com/evstack/ev-node), production-ready, and fully composable.
+It's [open-source](https://github.com/evstack/ev-node), production-ready, and fully composable.
 
-At its core is \`ev-node\`, a modular node that exposes an [ABCI-compatible client interface](https://github.com/cometbft/cometbft/tree/main/abci), — letting you bring any VM or execution logic, including Cosmos SDK or custom-built runtimes.
+At its core is \`ev-node\`, a modular node that exposes an [Execution interface](https://github.com/evstack/ev-node/blob/main/core/execution/execution.go), — letting you bring any VM or execution logic, including Cosmos SDK or custom-built runtimes.
 
 Evolving from Cosmos SDK?
 
@@ -44,7 +44,7 @@ Plus, you're restricted to the execution environment that the shared blockchain 
 
 Deploying a new chain might sound like the perfect solution for the problems listed above. While it's somewhat true, deploying a new layer 1 chain presents a complex set of challenges and trade-offs for developers looking to build blockchain products.
 
-Deploying a legacy layer 1 has huge barriers to entry: time, capital, token emissions and expertise,
+Deploying a legacy layer 1 has huge barriers to entry: time, capital, token emissions and expertise.
 
 In order to secure the network, developers must bootstrap a sufficiently secure set of validators, incurring the overhead of managing a full consensus network. This requires paying validators with inflationary tokens, putting the network‘s business sustainability at risk.etwork effects are also critical for success, but can be challenging to achieve as the network must gain widespread adoption to be secure and valuable.
 
@@ -86,7 +86,7 @@ Another possibility is taking an existing layer 1 built with the Cosmos SDK and 
 
 ## When can you use Evolve?
 
-As of today, Evolve provides a centralized sequencer, an execution interface (ABCI or Cosmos SDK), and a connection to a data availability layer.
+As of today, Evolve provides a single sequencer, an execution interface (EVM or Cosmos SDK), and a connection to Celestia.
 
 We're currently working on implementing many new and exciting features such as light nodes and state fraud proofs.
 
