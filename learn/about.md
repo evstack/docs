@@ -86,7 +86,7 @@ Another possibility is taking an existing layer 1 built with the Cosmos SDK and 
 
 ## When can you use Evolve?
 
-As of today, Evolve provides a single sequencer, an execution interface (EVM or Cosmos SDK), and a connection to Celestia.
+As of today, Evolve provides a single sequencer, an execution interface (Engine API or ABCI), and a connection to Celestia.
 
 We're currently working on implementing many new and exciting features such as light nodes and state fraud proofs.
 
