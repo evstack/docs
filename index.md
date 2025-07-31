@@ -26,7 +26,7 @@ features:
     link: /learn/about#why-evolve
     icon: 🚀
   - title: Speed to Traction
-    details: Get to market fast with infrastructure that adapts to your app—not the other way around. Skip the complexity and start building what matters: your product.
+    details: Get to market fast with infrastructure that adapts to your app—not the other way around. Skip the complexity and start building what matters; your product.
     link: /learn/execution
     icon: ⚡
   - title: No Validator Overhead
