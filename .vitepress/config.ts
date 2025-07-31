@@ -23,6 +23,10 @@ export default withMermaid({
   head: [
     ["link", { rel: "icon", href: "/img/favicon.svg", type: "image/svg+xml" }],
     ["link", { rel: "icon", href: "/img/favicon.png", type: "image/png" }],
+     [
+      "link",
+      { rel: "shortcut icon", href: "/img/favicon.ico", type: "image/x-icon" },
+    ],
     ["meta", { name: "msapplication-TileColor", content: "#fff" }],
     ["meta", { name: "theme-color", content: "#fff" }],
     [
