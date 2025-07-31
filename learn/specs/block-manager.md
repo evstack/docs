@@ -596,4 +596,4 @@ See [tutorial] for running a multi-node network with both sequencer and non-sequ
 [block-sync]: https://github.com/evstack/ev-node/blob/main/pkg/sync/sync_service.go
 [full-node]: https://github.com/evstack/ev-node/blob/main/node/full.go
 [block-manager]: https://github.com/evstack/ev-node/blob/main/block/manager.go
-[tutorial]: https://rollkit.dev/guides/full-node
+[tutorial]: https://ev.xyz/guides/full-node

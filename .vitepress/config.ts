@@ -55,7 +55,7 @@ export default withMermaid({
       "script",
       {
         src: "https://plausible.celestia.org/js/plausible.js",
-        "data-domain": "rollkit.dev",
+        "data-domain": "ev.xyz",
         defer: true,
       },
     ],
