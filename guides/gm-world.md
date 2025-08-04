@@ -1,13 +1,13 @@
 ---
 title: GM World tutorial
-description: Learn how to build and deploy a CosmWasm-based "gm" (good morning) application using Rollkit.
+description: Learn how to build and deploy a CosmWasm-based "gm" (good morning) application using Evolve.
 ---
 
 # GM world chain
 
 ## 🌞 Introduction {#introduction}
 
-This tutorial will guide you through building a sovereign `gm-world` chain (`gm` stands for "good morning") using Rollkit. Unlike the [quick start guide](/guides/quick-start.md), this tutorial provides a more practical approach to understanding sovereign chain development.
+This tutorial will guide you through building a evolve `gm-world` chain (`gm` stands for "good morning") using Evolve. Unlike the [quick start guide](/guides/quick-start.md), this tutorial provides a more practical approach to understanding evolve chain development.
 
 We will cover:
 
@@ -57,10 +57,10 @@ ignite scaffold chain gm --address-prefix gm
 cd gm
 ```
 
-Install a specific version of ignite to use rollkit
+Install a specific version of ignite to use evolve
 
 ```bash
-ignite app install -g github.com/ignite/apps/rollkit
+ignite app install -g github.com/ignite/apps/evolve
 ```
 
 Install your app locally:
@@ -69,12 +69,12 @@ Install your app locally:
 make install
 ```
 
-## Add Rollkit Features {#add-rollkit-features}
+## Add Evolve Features {#add-evolve-features}
 
-Enhance your blockchain by adding Rollkit features. Use the following command:
+Enhance your blockchain by adding Evolve features. Use the following command:
 
 ```bash
-ignite rollkit add
+ignite evolve add
 ```
 
 ## Build your chain {#build-your-chain}
@@ -89,10 +89,10 @@ This will create a `~/.gm` folder with all the necessary files to run a chain.
 
 ## Initialize Your Blockchain {#initialize-your-blockchain}
 
-Before starting your blockchain, you need to initialize it with Rollkit support. Initialize the blockchain as follows:
+Before starting your blockchain, you need to initialize it with Evolve support. Initialize the blockchain as follows:
 
 ```bash
-ignite rollkit init
+ignite evolve init
 ```
 
 It will also initialize 2 accounts `alice` and `bob`:
@@ -104,7 +104,7 @@ Now that we have our gm app generated and installed, we can launch our GM chain 
 First lets start the local DA network:
 
 ```bash
-curl -sSL https://rollkit.dev/install-local-da.sh | bash -s {{constants.rollkitLatestTag}}
+curl -sSL https://evolve.dev/install-local-da.sh | bash -s {{constants.evolveLatestTag}}
 ```
 
 you should see logs like:
@@ -118,43 +118,43 @@ you should see logs like:
 After which we can start the app:
 
 ```bash
-gmd start --rollkit.node.aggregator
+gmd start --evolve.node.aggregator
 ```
 
 You should see an output like this:
 
 ```bash
-2:50PM INF creating new client module=rollkit namespace=
+2:50PM INF creating new client module=evolve namespace=
 2:50PM INF No state found in store, initializing new state module=BlockManager
-2:50PM INF Initializing chain chainID=gm genesisTime=2025-06-26T12:50:11Z initialHeight=1 module=rollkit
+2:50PM INF Initializing chain chainID=gm genesisTime=2025-06-26T12:50:11Z initialHeight=1 module=evolve
 2:50PM INF InitChain chainID=gm initialHeight=1 module=baseapp
 2:50PM INF initializing blockchain state from genesis.json module=baseapp
-2:50PM INF chain initialized successfully appHash=E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855 module=rollkit
+2:50PM INF chain initialized successfully appHash=E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855 module=evolve
 2:50PM INF using default mempool ttl MempoolTTL=25 module=BlockManager
 2:50PM INF service start impl=EventBus module=events msg="Starting EventBus service"
 2:50PM INF service start impl=PubSub module=pubsub msg="Starting PubSub service"
 2:50PM INF service start impl=IndexerService module=txindex msg="Starting IndexerService service"
-2:50PM INF rollkit node run loop launched in background goroutine module=server
-2:50PM INF serving HTTP listen address=[::]:26657 module=rollkit
-2:50PM INF starting P2P client module=rollkit
-2:50PM INF started RPC server addr=127.0.0.1:7331 module=rollkit
+2:50PM INF evolve node run loop launched in background goroutine module=server
+2:50PM INF serving HTTP listen address=[::]:26657 module=evolve
+2:50PM INF starting P2P client module=evolve
+2:50PM INF started RPC server addr=127.0.0.1:7331 module=evolve
 2:50PM INF listening on address=/ip4/127.0.0.1/tcp/7676/p2p/12D3KooWPN1jqkgZcuF8UMZEa7nSjoF7zPmGHRrCDVrXrpfTLpfJ module=p2p
 2:50PM INF listening on address=/ip4/192.168.0.54/tcp/7676/p2p/12D3KooWPN1jqkgZcuF8UMZEa7nSjoF7zPmGHRrCDVrXrpfTLpfJ module=p2p
 2:50PM INF no peers - only listening for connections module=p2p
-2:50PM INF working in aggregator mode block time=1s module=rollkit
+2:50PM INF working in aggregator mode block time=1s module=evolve
 2:50PM INF Reaper started interval=1000 module=Reaper
 2:50PM INF using pending block height=1 module=BlockManager
-2:50PM INF Executing block height=1 module=rollkit num_txs=0 timestamp=2025-06-26T14:50:11+02:00
-2:50PM INF block executed successfully appHash=678DE6BBA6E23B000DC5AC86B60245E6EAC503C5C7085495F3B71B22A762EB19 height=1 module=rollkit
+2:50PM INF Executing block height=1 module=evolve num_txs=0 timestamp=2025-06-26T14:50:11+02:00
+2:50PM INF block executed successfully appHash=678DE6BBA6E23B000DC5AC86B60245E6EAC503C5C7085495F3B71B22A762EB19 height=1 module=evolve
 2:50PM INF indexed block events height=1 module=txindex
 2:50PM INF attempting to start executor (Adapter.Start) module=server
 2:50PM INF executor started successfully module=server
 2:50PM INF creating empty block height=2 module=BlockManager
-2:50PM INF Executing block height=2 module=rollkit num_txs=0 timestamp=2025-06-26T14:50:30+02:00
+2:50PM INF Executing block height=2 module=evolve num_txs=0 timestamp=2025-06-26T14:50:30+02:00
 2:50PM INF starting API server... address=tcp://0.0.0.0:1317 module=api-server
 2:50PM INF serve module=api-server msg="Starting RPC HTTP server on [::]:1317"
 2:50PM INF starting gRPC server... address=localhost:9090 module=grpc-server
-2:50PM INF block executed successfully appHash=0B3973A50C42D0184FB86409FC427BD528A790FA45BA2C9E20FDF14A3628CEC8 height=2 module=rollkit
+2:50PM INF block executed successfully appHash=0B3973A50C42D0184FB86409FC427BD528A790FA45BA2C9E20FDF14A3628CEC8 height=2 module=evolve
 ```
 
 Ignite has successfully launched the GM chain and the local DA network. The GM chain is running on port `7331` and the local DA network is running on port `7980`.
@@ -268,7 +268,7 @@ pagination:
 
 <!-- ## 📦 GM world UI app
 
-Now that you have an idea of how to interact with the chain with the rollkit CLI, let's look at the user interface (UI) application aspect of connecting a wallet to a chain.
+Now that you have an idea of how to interact with the chain with the evolve CLI, let's look at the user interface (UI) application aspect of connecting a wallet to a chain.
 
 Connecting your wallet to your chain is as straightforward as connecting to any other blockchain. It assumes you have the [Keplr](https://www.keplr.app/) wallet extension installed in your browser.
 

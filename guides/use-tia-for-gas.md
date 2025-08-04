@@ -2,7 +2,7 @@
 
 ## 🌞 Introduction {#introduction}
 
-This tutorial will guide you through building a sovereign `gm-world` chain using Rollkit, with TIA as the gas token. Unlike the [quick start guide](/guides/quick-start.md), which uses a native chain token for gas, this tutorial demonstrates how to integrate an IBC-enabled token, TIA, as the gas token within the chain, providing a deeper exploration of sovereign chain development.
+This tutorial will guide you through building a sovereign `gm-world` chain using Evolve, with TIA as the gas token. Unlike the [quick start guide](/guides/quick-start.md), which uses a native chain token for gas, this tutorial demonstrates how to integrate an IBC-enabled token, TIA, as the gas token within the chain, providing a deeper exploration of sovereign chain development.
 
 No prior understanding of the build process is required, just that it utilizes the [Cosmos SDK](https://github.com/cosmos/cosmos-sdk) for blockchain applications.
 
@@ -27,7 +27,7 @@ import constants from '../.vitepress/constants/constants.js'
 Your local DA network is already running if you followed the [quick start guide](/guides/quick-start.md) or the [build a chain](/guides/gm-world.md). If not, you can start it with the following command:
 
 ```bash
-curl -sSL https://rollkit.dev/install-local-da.sh | bash -s {{constants.rollkitLatestTag}}
+curl -sSL https://evolve.dev/install-local-da.sh | bash -s {{constants.evolveLatestTag}}
 ```
 
 ## 🚀 Starting your chain {#start-your-chain}
@@ -35,7 +35,7 @@ curl -sSL https://rollkit.dev/install-local-da.sh | bash -s {{constants.rollkitL
 Start the chain, posting to the local DA network:
 
 ```bash
-gmd start --rollkit.node.aggregator --rollkit.da.address http://localhost:7980 --minimum-gas-prices="0.02ibc/C3E53D20BC7A4CC993B17C7971F8ECD06A433C10B6A96F4C4C3714F0624C56DA,0.025stake"
+gmd start --evolve.node.aggregator --evolve.da.address http://localhost:7980 --minimum-gas-prices="0.02ibc/C3E53D20BC7A4CC993B17C7971F8ECD06A433C10B6A96F4C4C3714F0624C56DA,0.025stake"
 ```
 
 Note that we specified the gas token to be IBC TIA. We still haven't made an IBC connection to Celestia's Mocha testnet, however, if we assume our first channel will be an ICS-20 transfer channel to Celestia, we can already calculate the token denom using this formula:
@@ -48,7 +48,7 @@ Now you should see the logs of the running node:
 
 ```bash
 12:21PM INF starting node with ABCI CometBFT in-process module=server
-12:21PM INF starting node with Rollkit in-process module=server
+12:21PM INF starting node with Evolve in-process module=server
 12:21PM INF service start impl=multiAppConn module=proxy msg="Starting multiAppConn service"
 12:21PM INF service start connection=query impl=localClient module=abci-client msg="Starting localClient service"
 12:21PM INF service start connection=snapshot impl=localClient module=abci-client msg="Starting localClient service"
@@ -179,7 +179,7 @@ Note: These accounts should always be the same because of the hardcoded mnemonic
 Fund the relayer on our chain:
 
 ```bash
-rollkit tx bank send gm-key-2 gm1jqevcsld0dqpjp3csfg7alkv3lehvn8uswknrc 10000000stake --keyring-backend test --chain-id gm --fees 5000stake -y
+evolve tx bank send gm-key-2 gm1jqevcsld0dqpjp3csfg7alkv3lehvn8uswknrc 10000000stake --keyring-backend test --chain-id gm --fees 5000stake -y
 ```
 
 Fund the relayer on the Celestia Mocha testnet:
@@ -221,7 +221,7 @@ rly start gm_mocha-4
 Transfer TIA from Mocha to our chain:
 
 ```bash
-ACCOUNT_ON_CHAIN="$(rollkit keys show -a --keyring-backend test gm-key-2)"
+ACCOUNT_ON_CHAIN="$(evolve keys show -a --keyring-backend test gm-key-2)"
 CHANNEL_ID_ON_MOCHA="$(rly q channels mocha gm_chain | jq -r .channel_id | tail -1)"
 
 rly tx transfer mocha gm_chain 1000000utia "$ACCOUNT_ON_CHAIN" "$CHANNEL_ID_ON_MOCHA" --path gm_mocha-4
@@ -230,7 +230,7 @@ rly tx transfer mocha gm_chain 1000000utia "$ACCOUNT_ON_CHAIN" "$CHANNEL_ID_ON_M
 Verify the account on our chain is funded with IBC TIA:
 
 ```bash
-gmd query bank balances "$(rollkit keys show -a --keyring-backend test gm-key-2)"
+gmd query bank balances "$(evolve keys show -a --keyring-backend test gm-key-2)"
 # =>
 # balances:
 # - amount: "1000000"
@@ -246,13 +246,13 @@ gmd query bank balances "$(rollkit keys show -a --keyring-backend test gm-key-2)
 Finally, send a transaction on our chain using IBC TIA as the gas token:
 
 ```bash
-ACCOUNT_ON_CHAIN="$(rollkit keys show -a --keyring-backend test gm-key-2)"
+ACCOUNT_ON_CHAIN="$(evolve keys show -a --keyring-backend test gm-key-2)"
 
 # Send the transaction
-TX_HASH=$(rollkit tx bank send "$ACCOUNT_ON_CHAIN" "$ACCOUNT_ON_CHAIN" 1stake --keyring-backend test --chain-id gm --gas-prices 0.02ibc/C3E53D20BC7A4CC993B17C7971F8ECD06A433C10B6A96F4C4C3714F0624C56DA -y --output json | jq -r .txhash)
+TX_HASH=$(evolve tx bank send "$ACCOUNT_ON_CHAIN" "$ACCOUNT_ON_CHAIN" 1stake --keyring-backend test --chain-id gm --gas-prices 0.02ibc/C3E53D20BC7A4CC993B17C7971F8ECD06A433C10B6A96F4C4C3714F0624C56DA -y --output json | jq -r .txhash)
 
 # Verify success
-rollkit q tx "$TX_HASH" --output json | jq .code # => 0
+evolve q tx "$TX_HASH" --output json | jq .code # => 0
 ```
 
 ## 🎉 Next steps

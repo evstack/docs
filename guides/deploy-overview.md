@@ -4,7 +4,7 @@ description: This page provides an overview of some common ways to deploy chains
 
 # Deploying Your Chain
 
-One of the benefits of building chains with Rollkit is the flexibility you have as a developer to choose things like the DA layer, the settlement scheme, and the execution environment.
+One of the benefits of building chains with Evolve is the flexibility you have as a developer to choose things like the DA layer, the settlement scheme, and the execution environment.
 
 The challenge that comes with this flexibility is that there are more services that now need to be deployed and managed while running your chain.
 

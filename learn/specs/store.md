@@ -31,7 +31,7 @@ The `TxnDatastore` interface inside [go-datastore] is used for constructing diff
 
 - `NewDefaultKVStore`: Builds a key-value store that uses the [BadgerDB] library and stores the data on disk at the specified path.
 
-A Rollkit full node is [initialized][full_node_store_initialization] using `NewDefaultKVStore` as the base key-value store for underlying storage. To store various types of data in this base key-value store, different prefixes are used: `mainPrefix`, `dalcPrefix`, and `indexerPrefix`. The `mainPrefix` equal to `0` is used for the main node data, `dalcPrefix` equal to `1` is used for Data Availability Layer Client (DALC) data, and `indexerPrefix` equal to `2` is used for indexing related data.
+A Evolve full node is [initialized][full_node_store_initialization] using `NewDefaultKVStore` as the base key-value store for underlying storage. To store various types of data in this base key-value store, different prefixes are used: `mainPrefix`, `dalcPrefix`, and `indexerPrefix`. The `mainPrefix` equal to `0` is used for the main node data, `dalcPrefix` equal to `1` is used for Data Availability Layer Client (DALC) data, and `indexerPrefix` equal to `2` is used for indexing related data.
 
 For the main node data, `DefaultStore` struct, an implementation of the Store interface, is used with the following prefixes for various types of data within it:
 
@@ -82,11 +82,11 @@ See [Store Interface][store_interface] and [Default Store][default_store] for it
 
 [8] [Serialization][serialization]
 
-[store_interface]: https://github.com/rollkit/rollkit/blob/main/pkg/store/types.go#L11
-[default_store]: https://github.com/rollkit/rollkit/blob/main/pkg/store/store.go
-[full_node_store_initialization]: https://github.com/rollkit/rollkit/blob/main/node/full.go#L96
-[block manager]: https://github.com/rollkit/rollkit/blob/main/block/manager.go
+[store_interface]: https://github.com/evstack/ev-node/blob/main/pkg/store/types.go#L11
+[default_store]: https://github.com/evstack/ev-node/blob/main/pkg/store/store.go
+[full_node_store_initialization]: https://github.com/evstack/ev-node/blob/main/node/full.go#L96
+[block manager]: https://github.com/evstack/ev-node/blob/main/block/manager.go
 [BadgerDB]: https://github.com/dgraph-io/badger
 [go-datastore]: https://github.com/ipfs/go-datastore
-[kv.go]: https://github.com/rollkit/rollkit/blob/main/pkg/store/kv.go
-[serialization]: https://github.com/rollkit/rollkit/blob/main/types/serialization.go
+[kv.go]: https://github.com/evstack/ev-node/blob/main/pkg/store/kv.go
+[serialization]: https://github.com/evstack/ev-node/blob/main/types/serialization.go

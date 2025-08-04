@@ -41,17 +41,17 @@ compare_versions() {
     fi
 }
 
-print_header "Downloading Rollkit source code..."
+print_header "Downloading ev-npde source code..."
 
 if [ -z "$1" ]; then
-  print_error "Usage: install.sh <rollkit-tag|branch>"; exit 1
+  print_error "Usage: install.sh <ev-node-tag|branch>"; exit 1
 fi
 
-git clone --depth 1 --branch "$1" https://github.com/rollkit/rollkit.git || {
-  print_error "Failed to clone Rollkit at ref '$1'"; exit 1;
+git clone --depth 1 --branch "$1" https://github.com/evstack/ev-node.git || {
+  print_error "Failed to clone ev-node at ref '$1'"; exit 1;
 }
 
-cd rollkit || { print_error "Failed to find the downloaded repository."; exit 1; }
+cd ev-node || { print_error "Failed to find the downloaded repository."; exit 1; }
 
 print_header "Extracting Go version from go.mod..."
 go_mod_version=$(grep "^go " go.mod | cut -d' ' -f2)
@@ -66,7 +66,7 @@ echo -e "   Required Go version: ${BOLD}${formatted_go_version}${RESET}\n"
 print_header "Checking if Go is installed..."
 if ! which go > /dev/null; then
     print_warning "Go is not installed. Attempting to install Go..."
-    curl -sL "https://rollkit.dev/install-go.sh" | sh -s "$formatted_go_version"
+    curl -sL "https://ev.xyz/install-go.sh" | sh -s "$formatted_go_version"
 fi
 
 installed_version=$(go version | awk '{print $3}' | sed 's/go//')
@@ -92,6 +92,6 @@ print_success "CLI installed successfully!"
 
 cd ..
 print_header "Cleaning up downloads..."
-rm -rf rollkit
+rm -rf ev-node
 
 print_success "Installation completed successfully."

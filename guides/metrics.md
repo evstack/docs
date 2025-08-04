@@ -1,22 +1,22 @@
-# Rollkit Metrics Guide
+# Evolve Metrics Guide
 
 ## How to configure metrics
 
-Rollkit can report and serve Prometheus metrics, which can be consumed by Prometheus collector(s).
+Evolve can report and serve Prometheus metrics, which can be consumed by Prometheus collector(s).
 
 This functionality is disabled by default.
 
-To enable Prometheus metrics, set `instrumentation.prometheus=true` in your Rollkit node's configuration file.
+To enable Prometheus metrics, set `instrumentation.prometheus=true` in your Evolve node's configuration file.
 
 Metrics will be served under `/metrics` on port 26660 by default. The listening address can be changed using the `instrumentation.prometheus_listen_addr` configuration option.
 
 ## List of available metrics
 
-You can find the full list of available metrics in the [Technical Specifications](https://rollkit.github.io/rollkit/specs/block-manager.html#metrics).
+You can find the full list of available metrics in the [Technical Specifications](../learn/specs/block-manager.html#metrics).
 
 ## Viewing Metrics
 
-Once your Rollkit node is running with metrics enabled, you can view the metrics by:
+Once your Evolve node is running with metrics enabled, you can view the metrics by:
 
 1. Accessing the metrics endpoint directly:
 
@@ -28,7 +28,7 @@ Once your Rollkit node is running with metrics enabled, you can view the metrics
 
    ```yaml
    scrape_configs:
-     - job_name: rollkit
+     - job_name: evolve
        static_configs:
          - targets: ['localhost:26660']
    ```
@@ -37,7 +37,7 @@ Once your Rollkit node is running with metrics enabled, you can view the metrics
 
 ## Example Prometheus Configuration
 
-Here's a basic Prometheus configuration to scrape metrics from a Rollkit node:
+Here's a basic Prometheus configuration to scrape metrics from a Evolve node:
 
 ```yaml
 global:
@@ -45,7 +45,7 @@ global:
   evaluation_interval: 15s
 
 scrape_configs:
-  - job_name: rollkit
+  - job_name: evolve
     static_configs:
       - targets: ['localhost:26660']
 ```
@@ -56,8 +56,8 @@ If you're not seeing metrics:
 
 1. Ensure metrics are enabled in your configuration with `instrumentation.prometheus=true`
 2. Verify the metrics endpoint is accessible: `curl http://localhost:26660/metrics`
-3. Check your Prometheus configuration is correctly pointing to your Rollkit node
-4. Examine the Rollkit node logs for any errors related to the metrics server
+3. Check your Prometheus configuration is correctly pointing to your Evolve node
+4. Examine the Evolve node logs for any errors related to the metrics server
 
 ## Advanced Configuration
 
@@ -68,7 +68,7 @@ instrumentation:
   prometheus: true
   prometheus_listen_addr: ":26660"
   max_open_connections: 3
-  namespace: "rollkit"
+  namespace: "evolve"
 ```
 
 These settings allow you to:

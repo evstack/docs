@@ -1,17 +1,17 @@
-[![Deploy](https://github.com/rollkit/docs/actions/workflows/deploy.yml/badge.svg)](https://github.com/rollkit/docs/actions/workflows/deploy.yml)
+[![Deploy](https://github.com/evstack/docs/actions/workflows/deploy.yml/badge.svg)](https://github.com/evstack/docs/actions/workflows/deploy.yml)
 
-# Rollkit Documentation Site
+# Evolve Documentation Site
 
-Welcome to the official documentation repository for Rollkit.
+Welcome to the official documentation repository for Evolve.
 
-Here you'll find comprehensive guides, and reference materials to help you make the most out of Rollkit.
+Here you'll find comprehensive guides, and reference materials to help you make the most out of Evolve.
 
 ## Building the site
 
 To get started, clone the repository and run the following:
 
 ```bash
-yarn run docs:dev
+yarn run dev
 ```
 
 This documentation site is built with [VitePress](https://vitepress.dev)
@@ -29,9 +29,9 @@ Please ensure you review the detailed Contribution Guidelines above before makin
 
 ## Directory Structure
 
-* /guides: Step-by-step instructions to help users build their own chains with Rollkit.
-* /learn: Technical reference materials, such as configuration options and details about the Rollkit stack.
-* /blog: Blog posts for the Rollkit blog.
+* /guides: Step-by-step instructions to help users build their own chains with Evolve.
+* /learn: Technical reference materials, such as configuration options and details about the Evolve stack.
+* /blog: Blog posts for the Evolve blog.
 <!-- * /guides [WIP]: In-depth articles that cover specific topics in detail. -->
 * /public: Images, diagrams, and other media files used in the documentation.
 

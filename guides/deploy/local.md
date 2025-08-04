@@ -39,11 +39,11 @@ Docker Compose version v2.23.0-desktop.1
 
 In addition to our chain, we need to run a DA.
 
-We will use the [local-da](https://github.com/rollkit/local-da) for this tutorial and run it with our chain.
+We will use the [local-da](https://github.com/evstack/ev-node/tree/main/da/cmd/local-da) for this tutorial and run it with our chain.
 
 To save time, we can use the local-da Dockerfile:
 
-* [local-da Dockerfile](https://github.com/rollkit/rollkit/blob/main/Dockerfile.da)
+* [local-da Dockerfile](https://github.com/evstack/ev-node/blob/main/Dockerfile.da)
 This will allow us to focus on how we can run the gm-world chain with Docker Compose.
 
 ### 🐳 Dockerfile {#dockerfile}
@@ -51,7 +51,7 @@ This will allow us to focus on how we can run the gm-world chain with Docker Com
 First, we need to create a Dockerfile for our gm-world chain. Create a new file called `Dockerfile.gm` in the root of the `gm` directory and add the following code:
 
 ```dockerfile-vue
-# Stage 1: Install ignite CLI and rollkit
+# Stage 1: Install ignite CLI and evolve
 FROM golang AS base
 
 # Install dependencies
@@ -61,8 +61,8 @@ RUN apt update && \
  ca-certificates \
  curl
 
-RUN curl -sSL https://rollkit.dev/install.sh | bash
-# Install rollkit
+RUN curl -sSL https://evolve.dev/install.sh | bash
+# Install evolve
 
 # Install ignite
 RUN curl https://get.ignite.com/cli! | bash
@@ -79,9 +79,9 @@ RUN go mod download
 COPY . .
 
 # Build the chain
-RUN ignite app install -g github.com/ignite/apps/rollkit
+RUN ignite app install -g github.com/ignite/apps/evolve
 RUN ignite chain build  -y
-RUN ignite rollkit init
+RUN ignite evolve init
 
 # Stage 2: Set up the runtime environment
 FROM debian:bookworm-slim
@@ -94,7 +94,7 @@ RUN apt update && \
 # Set the working directory
 WORKDIR /root
 
-# Copy over the rollkit binary from the build stage
+# Copy over the evolve binary from the build stage
 COPY --from=base /go/bin/gmd /usr/bin
 
 
@@ -106,7 +106,7 @@ COPY --from=base /root/.gm /root/.gm
 # CMD tail -f /dev/null
 
 ENTRYPOINT ["gmd"]
-CMD ["start","--rollkit.node.aggregator"]
+CMD ["start","--evolve.node.aggregator"]
 ```
 
 This Dockerfile sets up the environment to build the chain and run the gm-world node. It then sets up the runtime environment to run the chain. This allows you as the developer to modify any files, and then simply rebuild the Docker image to run the new chain.
@@ -118,7 +118,7 @@ docker build -t gm-world -f Dockerfile.gm .
 ```
 
 ```bash
-cd rollkit
+cd evolve
 docker build -t local-da -f Dockerfile.da .
 cd ..
 ```
@@ -156,8 +156,8 @@ services:
     command:
       [
         "start",
-        "--rollkit.node.aggregator",
-        "--rollkit.da.address",
+        "--evolve.node.aggregator",
+        "--evolve.da.address",
         "http://0.0.0.0:7980",
       ]
     # Ensures the local-da service is up and running before starting the chain
@@ -166,7 +166,7 @@ services:
 
   # Define the local DA service
   local-da:
-    # Use the published image from rollkit
+    # Use the published image from evolve
     image: local-da
       # Set the name of the docker container for ease of use
     container_name: local-da
@@ -205,7 +205,7 @@ You should see output like the following:
 ```bash
 CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS         PORTS                    NAMES
 d50c7f2fffde   local-da   "local-da -listen-all"   10 seconds ago   Up 9 seconds   0.0.0.0:7980->7980/tcp   local-da
-b9d5e80e81fb   gm-world   "gmd start --rollkit…"   27 minutes ago   Up 9 seconds                            gm-world
+b9d5e80e81fb   gm-world   "gmd start --evolve…"   27 minutes ago   Up 9 seconds                            gm-world
 ```
 
 We can see the gm-world chain running in container `gm-world` and the local DA network running in container `local-da`.
@@ -225,7 +225,6 @@ exit
 ```
 
 Then you can shut down your chain environment by running `CRTL+C` in your terminal.
-
 
 If you want to stop the docker containers without shutting down your terminal, you can run:
 
