@@ -171,14 +171,8 @@ function sidebarHome() {
       text: "Learn",
       collapsed: true,
       items: [
-        {
-          text: "About Evolve",
-          link: "/learn/about",
-        },
-        {
-          text: "Data Availability",
-          link: "/learn/data-availability",
-        },
+        { text: "About Evolve", link: "/learn/about" },
+        { text: "Data Availability", link: "/learn/data-availability" },
         {
           text: "Sequencing",
           collapsed: true,
@@ -187,10 +181,7 @@ function sidebarHome() {
             { text: "Single", link: "/learn/sequencing/single" },
           ],
         },
-        {
-          text: "Execution",
-          link: "/learn/execution",
-        },
+        { text: "Execution", link: "/learn/execution" },
         {
           text: "Technical Specifications",
           collapsed: true,
@@ -213,98 +204,79 @@ function sidebarHome() {
       text: "How To Guides",
       collapsed: true,
       items: [
-        {
-          text: "Quick start guide",
-          link: "/guides/quick-start",
-        },
-        { text: "Build a chain", link: "/guides/gm-world" },
+        { text: "Quick start guide", link: "/guides/quick-start" },
         {
           text: "DA",
           collapsed: true,
           items: [
-            {
-              text: "Deploy A Local DA",
-              link: "/guides/da/local-da",
-            },
-            {
-              text: "Connect to Celestia",
-              link: "/guides/da/celestia-da",
-            },
+            { text: "Deploy A Local DA", link: "/guides/da/local-da" },
+            { text: "Connect to Celestia", link: "/guides/da/celestia-da" },
           ],
         },
-        // {
-        //   text: "Execution",
-        //   collapsed: true,
-        //   items: [
-        //     { text: "CosmWasm", link: "/guides/execution/cosmwasm" },
-        //   ],
-        // },
+        {
+          text: "Sequencer",
+          collapsed: true,
+          items: [
+            { text: "EVM", link: "/guides/sequencer/evm" },
+            { text: "ABCI", link: "/guides/sequencer/abci" },
+          ],
+        },
         {
           text: "Deploy your chain",
           collapsed: true,
           items: [
-            {
-              text: "Overview",
-              link: "/guides/deploy/overview",
-            },
-            {
-              text: "Local (dev)",
-              link: "/guides/deploy/local",
-            },
-            {
-              text: "Testnet",
-              link: "/guides/deploy/testnet",
-            },
+            { text: "Overview", link: "/guides/deploy/overview" },
+            { text: "Local (dev)", link: "/guides/deploy/local" },
+            { text: "Testnet", link: "/guides/deploy/testnet" },
           ],
         },
         {
-          text: "EVM",
+          text: "Backup",
           collapsed: true,
           items: [
-            {
-              text: "Single Sequencer",
-              link: "/guides/evm/single",
-            },
-            {
-              text: "Reth State Backup",
-              link: "/guides/evm/reth-backup",
-            },
+            { text: "Reth State Backup", link: "/guides/backup/evm" },
+          ],
+        },
+        //{
+          //text: "Execution",
+          //collapsed: true,
+          //items: [
+            //{ text: "CosmWasm", link: "/guides/execution/cosmwasm" },
+          //],
+        //},
+        {
+          text: "Full Node",
+          collapsed: true,
+          items: [
+            { text: "ABCI", link: "/guides/full_node/abci" },
           ],
         },
         {
-          text: "Run a Full Node",
-          link: "/guides/full-node",
+          text: "Genesis",
+          collapsed: true,
+          items: [
+            { text: "ABCI", link: "/guides/genesis/abci" },
+          ],
         },
         {
-          text: "Restart your chain",
-          link: "/guides/restart-chain",
+          text: "Reset",
+          collapsed: true,
+          items: [
+            { text: "ABCI", link: "/guides/reset/abci" },
+          ],
         },
         {
-          text: "Reset your chain's state",
-          link: "/guides/reset-state",
+          text: "Restart",
+          collapsed: true,
+          items: [
+            { text: "ABCI", link: "/guides/restart/abci" },
+          ],
         },
-        {
-          text: "CometBFT into a Evolve app",
-          link: "/guides/cometbft-to-evolve",
-        },
-        {
-          text: "Create genesis for your chain",
-          link: "/guides/create-genesis",
-        },
-        {
-          text: "Metrics",
-          link: "/guides/metrics",
-        },
-        {
-          text: "Use IBC token (TIA) as gas token in your chain",
-          link: "/guides/use-tia-for-gas",
-        },
+        { text: "Metrics", link: "/guides/metrics" },
+        { text: "Use IBC token (TIA) as gas token in your chain", link: "/guides/use-tia-for-gas" },
+        { text: "CometBFT into a Evolve app", link: "/guides/cometbft-to-evolve" },
       ],
     },
-    {
-      text: "Blog",
-      collapsed: true,
-      items: [{ text: "Overview", link: "/blog/overview" }],
-    },
+    { text: "Blog", collapsed: true, items: [ { text: "Overview", link: "/blog/overview" } ] },
   ];
 }
